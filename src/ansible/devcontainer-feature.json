@@ -1,0 +1,25 @@
+{
+    "id": "ansible",
+    "name": "Ansible",
+    "version": "1.0.0",
+    "documentationURL": "https://docs.ansible.com",
+    "description": "Installs Ansible CLI tools using pipx",
+    "dependsOn": {
+        "ghcr.io/devcontainers/features/python:1": {}
+    },
+    "options": {
+        "collections": {
+            "type": "string",
+            "default": "",
+            "description": "Comma or whitespace-separated Ansible Galaxy collections to install."
+        },
+        "roles": {
+            "type": "string",
+            "default": "",
+            "description": "Comma or whitespace-separated Ansible Galaxy roles to install."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

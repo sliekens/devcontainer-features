@@ -1,0 +1,19 @@
+{
+  "community_general": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ansible-core": {
+        "collections": "community.general"
+      }
+    }
+  },
+  "bitwarden_secrets": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ansible-core": {
+        "collections": "bitwarden.secrets"
+      }
+    },
+    "postCreateCommand": "pipx inject ansible-core bitwarden-sdk"
+  }
+}

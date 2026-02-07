@@ -1,0 +1,13 @@
+{
+    "id": "ansible-lint",
+    "name": "Ansible Lint",
+    "version": "1.0.0",
+    "documentationURL": "https://docs.ansible.com/projects/lint/",
+    "description": "Installs ansible-lint using pipx",
+    "dependsOn": {
+        "ghcr.io/devcontainers/features/python:1": {}
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

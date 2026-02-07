@@ -1,0 +1,28 @@
+{
+    "id": "bitwarden-cli",
+    "name": "Bitwarden CLI",
+    "version": "1.0.0",
+    "description": "Installs the official Bitwarden CLI binary from Bitwarden release assets.",
+    "documentationURL": "https://bitwarden.com/help/cli/",
+    "licenseURL": "https://github.com/bitwarden/clients/blob/main/LICENSE.txt",
+    "keywords": [
+        "bitwarden",
+        "cli",
+        "password manager"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use \"latest\" or a release version like \"2026.2.0\" or \"v2026.2.0\"."
+        }
+    },
+    "mounts": [
+        {
+            "type": "volume",
+            "source": "bitwarden-cli",
+            "target": "/home/vscode/.config/Bitwarden CLI"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/bitwarden-cli/on_create.sh"
+}

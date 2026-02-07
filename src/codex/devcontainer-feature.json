@@ -1,0 +1,39 @@
+{
+    "id": "codex",
+    "name": "Codex CLI",
+    "version": "1.0.0",
+    "description": "Installs OpenAI Codex CLI from the official packaged release assets and persists ~/.codex in shared state across devcontainers.",
+    "documentationURL": "https://developers.openai.com/codex",
+    "licenseURL": "https://github.com/openai/codex/blob/main/LICENSE",
+    "keywords": [
+        "codex",
+        "openai",
+        "ai",
+        "cli"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use \"latest\", \"0.114.0\", \"v0.114.0\", or \"rust-v0.114.0\"."
+        }
+    },
+    "mounts": [
+        {
+            "type": "volume",
+            "source": "codex",
+            "target": "/var/lib/codex"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/codex/on_create.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "openai.chatgpt"
+            ]
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

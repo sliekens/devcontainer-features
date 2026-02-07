@@ -1,0 +1,22 @@
+{
+    "ansible_and_ansible_lint": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ansible": {},
+            "ansible-lint": {}
+        }
+    },
+    "ansible_core": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ansible-core": {}
+        }
+    },
+    "ansible_core_and_ansible_lint": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ansible-core": {},
+            "ansible-lint": {}
+        }
+    }
+}

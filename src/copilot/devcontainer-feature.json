@@ -1,0 +1,36 @@
+{
+    "id": "copilot",
+    "name": "GitHub Copilot",
+    "version": "1.0.0",
+    "description": "Installs GitHub Copilot CLI from official release assets and persists shared ~/.copilot state across devcontainers.",
+    "documentationURL": "https://docs.github.com/copilot/concepts/agents/about-copilot-cli",
+    "licenseURL": "https://github.com/github/copilot-cli/blob/main/LICENSE.md",
+    "keywords": [
+        "copilot",
+        "github",
+        "ai",
+        "cli"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use \"latest\" for the most recent stable release, or specify a version like \"1.0.3\"."
+        }
+    },
+    "mounts": [
+        {
+            "type": "volume",
+            "source": "copilot",
+            "target": "/var/lib/copilot"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/copilot/on_create.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.copilot-chat"
+            ]
+        }
+    }
+}

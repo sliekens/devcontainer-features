@@ -1,0 +1,30 @@
+{
+    "id": "bitwarden-secrets-manager",
+    "name": "Bitwarden Secrets Manager CLI",
+    "version": "1.0.0",
+    "description": "Installs the Bitwarden Secrets Manager CLI (`bws`) binary from Bitwarden release assets.",
+    "documentationURL": "https://bitwarden.com/help/secrets-manager-cli/",
+    "licenseURL": "https://github.com/bitwarden/sdk/blob/main/LICENSE",
+    "keywords": [
+        "bitwarden",
+        "bws",
+        "secrets",
+        "secrets-manager",
+        "cli"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use \"latest\" or a release version like \"2.0.0\", \"v2.0.0\", or \"bws-v2.0.0\"."
+        }
+    },
+  "mounts": [
+        {
+            "type": "volume",
+            "source": "bitwarden-secrets-manager",
+            "target": "/var/lib/bitwarden-secrets-manager"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/bitwarden-secrets-manager/on_create.sh"
+}
