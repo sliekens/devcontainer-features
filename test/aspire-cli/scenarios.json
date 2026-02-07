@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils": {},
+      "aspire-cli": {
+        "quality": "staging"
+      }
+    }
+  },
+  "dev": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils": {},
+      "aspire-cli": {
+        "quality": "dev"
+      }
+    }
+  }
+}

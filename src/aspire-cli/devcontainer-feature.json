@@ -1,0 +1,33 @@
+{
+    "id": "aspire-cli",
+    "name": "Aspire CLI",
+    "version": "1.0.0",
+    "documentationURL": "https://aspire.dev/docs/",
+    "description": "Installs the .NET Aspire CLI",
+    "options": {
+        "quality": {
+            "type": "string",
+            "enum": [
+                "release",
+                "staging",
+                "dev"
+            ],
+            "default": "release",
+            "description": "Quality to download."
+        }
+    },
+    "mounts": [
+        {
+            "type": "volume",
+            "source": "aspire-cli-state-${devcontainerId}",
+            "target": "/var/lib/aspire-cli"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/aspire-cli/on_create.sh",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ],
+    "containerEnv": {
+        "ASPIRE_CLI_TELEMETRY_OPTOUT": "1"
+    }
+}

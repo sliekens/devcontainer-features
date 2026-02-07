@@ -1,0 +1,38 @@
+{
+    "id": "claude",
+    "name": "Claude Code",
+    "version": "1.0.0",
+    "description": "Installs the official Claude Code via the upstream native installer and persists shared state across devcontainers.",
+    "documentationURL": "https://code.claude.com/docs/en/overview",
+    "keywords": [
+        "anthropic",
+        "claude",
+        "ai",
+        "cli"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "stable",
+            "description": "Version/channel to install. Use `stable`, `latest`, or a specific version like `2.1.58`."
+        }
+    },
+    "mounts": [
+        {
+            "type": "volume",
+            "source": "claude",
+            "target": "/var/lib/claude"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/claude/on_create.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "Anthropic.claude-code"
+            ]
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
