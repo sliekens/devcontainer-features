@@ -73,7 +73,11 @@ resolve_release_json() {
     local requested_version="$1"
 
     if [ "$requested_version" = "latest" ]; then
-        github_api_get "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest"
+        # The /releases/latest endpoint returns the most recent release across
+        # ALL apps in the repo (web, desktop, etc.). We need to list releases
+        # and find the newest one tagged cli-*.
+        github_api_get "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases?per_page=30" \
+            | jq -e 'first(.[] | select(.tag_name | startswith("cli-")))'
         return
     fi
 
