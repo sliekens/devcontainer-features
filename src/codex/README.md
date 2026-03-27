@@ -35,3 +35,8 @@ Pin a specific Codex version when you need deterministic builds:
 
 This feature uses a shared volume named `codex` mounted at `/var/lib/codex`.  
 On container creation, it links `/var/lib/codex` to `$HOME/.codex`, so auth and configuration are preserved across rebuilds of the same feature-enabled devcontainer.
+
+## Release Notes
+
+## 1.0.0 - 2026-03-26
+- Initial release.

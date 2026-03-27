@@ -25,3 +25,8 @@ On create, it symlinks these to:
 
 - `$HOME/.config/gh`
 - `$HOME/.local/share/gh`
+
+## Release Notes
+
+## 1.0.0 - 2026-03-26
+- Initial release.

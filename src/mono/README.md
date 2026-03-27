@@ -13,3 +13,8 @@ Installs the Mono runtime and tooling.
 ## Options
 
 This feature does not expose configurable options.
+
+## Release Notes
+
+## 1.0.0 - 2026-03-26
+- Initial release.

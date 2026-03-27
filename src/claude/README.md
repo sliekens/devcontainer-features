@@ -22,3 +22,8 @@ Installs the official Anthropic Claude CLI using the upstream installer (`https:
 
 This feature uses a persistent volume named `claude` mounted at `/var/lib/claude` (shared across containers).  
 On create, it links that directory to `$HOME/.claude` so auth/configuration is reused.
+
+## Release Notes
+
+## 1.0.0 - 2026-03-26
+- Initial release.

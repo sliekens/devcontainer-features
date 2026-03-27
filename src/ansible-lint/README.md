@@ -12,3 +12,8 @@ This feature depends on `ghcr.io/devcontainers/features/python:1` to provide Pyt
     "ghcr.io/sliekens/devcontainer-features/ansible-lint:1": {}
 }
 ```
+
+## Release Notes
+
+## 1.0.0 - 2026-03-26
+- Initial release.
