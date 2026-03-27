@@ -3,7 +3,7 @@
     "name": "Aspire CLI",
     "version": "1.0.0",
     "documentationURL": "https://aspire.dev/docs/",
-    "description": "Installs the .NET Aspire CLI",
+    "description": "Installs the .NET Aspire CLI (`aspire`)",
     "options": {
         "quality": {
             "type": "string",

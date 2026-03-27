@@ -2,7 +2,7 @@
     "id": "codex",
     "name": "Codex CLI",
     "version": "1.0.0",
-    "description": "Installs OpenAI Codex CLI from the official packaged release assets and persists ~/.codex in shared state across devcontainers.",
+    "description": "Installs the OpenAI `codex` CLI from the official packaged release assets and persists `~/.codex` in shared state across devcontainers.",
     "documentationURL": "https://developers.openai.com/codex",
     "licenseURL": "https://github.com/openai/codex/blob/main/LICENSE",
     "keywords": [
