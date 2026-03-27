@@ -22,3 +22,8 @@ Installs the [Gitea CLI](https://gitea.com/gitea/tea) from Gitea releases and co
 
 This feature uses a persistent volume named `tea-cli` mounted at `/var/lib/tea-cli` (shared across containers).  
 On create, it links that directory to `$HOME/.config/tea` for stable user configuration.
+
+## Release Notes
+
+## 1.0.0 - 2026-03-26
+- Initial release.

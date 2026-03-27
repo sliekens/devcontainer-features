@@ -26,3 +26,8 @@ If you also want linting, use the separate `ansible-lint` feature.
 ## Compatibility
 
 This version supports images where the Python feature can provide `pipx`.
+
+## Release Notes
+
+## 1.0.0 - 2026-03-26
+- Initial release.

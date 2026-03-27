@@ -22,3 +22,8 @@ Installs the Bitwarden Secrets Manager CLI (`bws`) binary from Bitwarden release
 
 This feature uses a persistent volume named `bitwarden-secrets-manager` mounted at `/var/lib/bitwarden-secrets-manager`.  
 On create, it links that directory to `$HOME/.config/bws` so credentials and CLI state can be persisted across recreates.
+
+## Release Notes
+
+## 1.0.0 - 2026-03-26
+- Initial release.

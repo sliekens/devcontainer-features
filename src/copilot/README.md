@@ -22,3 +22,8 @@ Installs GitHub Copilot CLI from official release assets and persists shared `~/
 
 This feature uses a persistent volume named `copilot-cli` mounted at `/var/lib/copilot-cli`.  
 On create, it links that directory to `$HOME/.copilot` so auth and CLI state can be reused.
+
+## Release Notes
+
+## 1.0.0 - 2026-03-26
+- Initial release.
