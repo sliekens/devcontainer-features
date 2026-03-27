@@ -16,7 +16,7 @@ This repository contains [dev container features](https://containers.dev/impleme
 |------|---------|
 | `src/<feature>/devcontainer-feature.json` | Feature metadata (id, version, options) |
 | `src/<feature>/install.sh` | Installation script (runs as root) |
-| `src/<feature>/RELEASE_NOTES.md` | Versioned changelog for the feature |
+| `src/<feature>/README.md` | Feature documentation and release notes |
 | `test/<feature>/test.sh` | Feature tests |
 | `scripts/publish.sh` | Publish features to registry |
 | `scripts/test.sh` | Run feature tests locally |
@@ -40,7 +40,7 @@ This repository contains [dev container features](https://containers.dev/impleme
 ### Creating a new feature
 1. Create `src/<feature-id>/devcontainer-feature.json` with required fields: `id`, `name`, `version`
 2. Create `src/<feature-id>/install.sh` (must be executable)
-3. Create `src/<feature-id>/RELEASE_NOTES.md` and add the initial release entry
+3. Add a "Release Notes" section to `src/<feature-id>/README.md` with the initial release entry
 4. Create `test/<feature-id>/test.sh` for tests
 5. Test with `./scripts/test.sh <feature-id>`
 6. Publish with `./scripts/publish.sh <feature-id>`
@@ -49,7 +49,7 @@ This repository contains [dev container features](https://containers.dev/impleme
 
 Features use semantic versioning. To release a new version:
 1. Bump `version` in `devcontainer-feature.json`
-2. Update `src/<feature-id>/RELEASE_NOTES.md` with a new section for that version
+2. Update the "Release Notes" section in `src/<feature-id>/README.md` with a new entry for that version
 3. Run `./scripts/publish.sh <feature-id>`
 
 Release notes updates are required for any feature change that affects behavior, options, dependencies, install flow, or docs tied to usage.
