@@ -1,7 +1,7 @@
 {
     "id": "aspire-cli",
     "name": "Aspire CLI",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "documentationURL": "https://aspire.dev/docs/",
     "description": "Installs the .NET Aspire CLI (`aspire`)",
     "options": {
@@ -27,6 +27,13 @@
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils"
     ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "microsoft-aspire.aspire-vscode"
+            ]
+        }
+    },
     "containerEnv": {
         "ASPIRE_CLI_TELEMETRY_OPTOUT": "1"
     }
