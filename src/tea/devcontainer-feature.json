@@ -3,7 +3,7 @@
     "name": "Gitea CLI (tea)",
     "version": "1.0.0",
     "documentationURL": "https://gitea.com/gitea/tea",
-    "description": "Installs the Gitea CLI (tea) from Gitea releases and enables shell completion via bash_completion.d and zsh site-functions.",
+    "description": "Installs the Gitea CLI (`tea`) from Gitea releases and enables shell completion via bash_completion.d and zsh site-functions.",
     "mounts": [
     {
             "type": "volume",

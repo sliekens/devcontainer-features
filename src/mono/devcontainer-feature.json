@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "name": "Mono",
     "documentationURL": "https://www.mono-project.com/docs/",
-    "description": "Mono",
+    "description": "Installs `mono-complete` from the official Mono stable repository",
     "customizations": {
         "vscode": {
             "extensions": [

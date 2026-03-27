@@ -2,7 +2,7 @@
     "id": "copilot",
     "name": "GitHub Copilot",
     "version": "1.0.0",
-    "description": "Installs GitHub Copilot CLI from official release assets and persists shared ~/.copilot state across devcontainers.",
+    "description": "Installs the GitHub `copilot` CLI from official release assets and persists shared `~/.copilot` state across devcontainers.",
     "documentationURL": "https://docs.github.com/copilot/concepts/agents/about-copilot-cli",
     "licenseURL": "https://github.com/github/copilot-cli/blob/main/LICENSE.md",
     "keywords": [

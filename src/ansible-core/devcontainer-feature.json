@@ -3,7 +3,7 @@
     "name": "Ansible Core",
     "version": "1.0.0",
     "documentationURL": "https://docs.ansible.com/projects/ansible-core/devel/",
-    "description": "Installs ansible-core via pipx",
+    "description": "Installs `ansible-core` via pipx with optional Ansible Galaxy collections and roles",
     "dependsOn": {
         "ghcr.io/devcontainers/features/python:1": {}
     },

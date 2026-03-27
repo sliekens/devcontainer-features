@@ -3,7 +3,7 @@
   "name": "GitHub CLI with Persistent State",
   "version": "1.0.0",
   "documentationURL": "https://cli.github.com/manual",
-  "description": "Wraps the official GitHub CLI feature and adds persistent volume mounts for config and state",
+  "description": "Wraps the official `gh` (GitHub CLI) feature and adds persistent volume mounts for config and state",
   "dependsOn": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
