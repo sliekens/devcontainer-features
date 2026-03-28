@@ -20,10 +20,13 @@ Installs the [Gitea CLI](https://gitea.com/gitea/tea) from Gitea releases and co
 
 ## Persistent State
 
-This feature uses a persistent volume named `tea-cli` mounted at `/var/lib/tea-cli` (shared across containers).  
+This feature bind mounts `~/.config/tea` from the host to `/var/lib/tea-cli` in the container.
 On create, it links that directory to `$HOME/.config/tea` for stable user configuration.
 
 ## Release Notes
+
+## 1.1.0 - 2026-03-28
+- Use bind mount from host `~/.config/tea` instead of a Docker volume for persistent state.
 
 ## 1.0.0 - 2026-03-26
 - Initial release.

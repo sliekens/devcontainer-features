@@ -20,10 +20,13 @@ Installs the .NET Aspire CLI.
 
 ## Persistent State
 
-This feature uses a persistent volume named `aspire-cli-state-${devcontainerId}` mounted at `/var/lib/aspire-cli`.  
+This feature bind mounts `~/.aspire` from the host to `/var/lib/aspire-cli` in the container.
 On create, it links `/var/lib/aspire-cli` to `$HOME/.aspire` so CLI state persists across container rebuilds.
 
 ## Release Notes
+
+## 1.3.0 - 2026-03-28
+- Use bind mount from host `~/.aspire` instead of a Docker volume for persistent state.
 
 ## 1.2.0 - 2026-03-28
 

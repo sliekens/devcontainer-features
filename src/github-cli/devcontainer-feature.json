@@ -1,7 +1,7 @@
 {
   "id": "github-cli",
   "name": "GitHub CLI with Persistent State",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "documentationURL": "https://cli.github.com/manual",
   "description": "Wraps the official `gh` (GitHub CLI) feature and adds persistent volume mounts for config and state",
   "dependsOn": {
@@ -9,13 +9,13 @@
   },
   "mounts": [
     {
-      "type": "volume",
-      "source": "github-cli-config",
+      "type": "bind",
+      "source": "${localEnv:HOME}/.config/gh",
       "target": "/var/lib/github-cli/config"
     },
     {
-      "type": "volume",
-      "source": "github-cli-state",
+      "type": "bind",
+      "source": "${localEnv:HOME}/.local/share/gh",
       "target": "/var/lib/github-cli/state"
     }
   ],

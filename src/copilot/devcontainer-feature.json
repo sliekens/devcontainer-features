@@ -1,7 +1,7 @@
 {
     "id": "copilot",
     "name": "GitHub Copilot",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Installs the GitHub `copilot` CLI from official release assets and persists shared `~/.copilot` state across devcontainers.",
     "documentationURL": "https://docs.github.com/copilot/concepts/agents/about-copilot-cli",
     "licenseURL": "https://github.com/github/copilot-cli/blob/main/LICENSE.md",
@@ -20,8 +20,8 @@
     },
     "mounts": [
         {
-            "type": "volume",
-            "source": "copilot",
+            "type": "bind",
+            "source": "${localEnv:HOME}/.copilot",
             "target": "/var/lib/copilot"
         }
     ],
