@@ -14,8 +14,8 @@ Installs the .NET Aspire CLI.
 
 ## Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
+| Option    | Type   | Default   | Description                                                |
+| --------- | ------ | --------- | ---------------------------------------------------------- |
 | `quality` | string | `release` | Quality to download. Allowed: `release`, `staging`, `dev`. |
 
 ## Persistent State
@@ -25,8 +25,14 @@ On create, it links `/var/lib/aspire-cli` to `$HOME/.aspire` so CLI state persis
 
 ## Release Notes
 
+## 1.2.0 - 2026-03-28
+
+- Enabled container tunnel support by default for improved CLI experience in devcontainers (`ASPIRE_ENABLE_CONTAINER_TUNNEL` set to `true`).
+
 ## 1.1.0 - 2026-03-27
+
 - Added recommended VS Code extension `microsoft-aspire.aspire-vscode`.
 
 ## 1.0.0 - 2026-03-26
+
 - Initial release.
