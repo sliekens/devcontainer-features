@@ -20,10 +20,13 @@ Installs the official Anthropic Claude CLI using the upstream installer (`https:
 
 ## Persistent State
 
-This feature uses a persistent volume named `claude` mounted at `/var/lib/claude` (shared across containers).  
+This feature bind mounts `~/.claude` from the host to `/var/lib/claude` in the container.
 On create, it links that directory to `$HOME/.claude` so auth/configuration is reused.
 
 ## Release Notes
+
+## 1.1.0 - 2026-03-28
+- Use bind mount from host `~/.claude` instead of a Docker volume for persistent state.
 
 ## 1.0.0 - 2026-03-26
 - Initial release.

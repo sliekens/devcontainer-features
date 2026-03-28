@@ -16,17 +16,17 @@ This feature does not expose configurable options.
 
 ## Persistent State
 
-This feature mounts two persistent volumes that are shared across containers using this feature:
+This feature bind mounts directories from the host user's home:
 
-- `github-cli-config-${devcontainerId}` → `/var/lib/github-cli/config`
-- `github-cli-state-${devcontainerId}` → `/var/lib/github-cli/state`
+- `~/.config/gh` → `/var/lib/github-cli/config`
+- `~/.local/share/gh` → `/var/lib/github-cli/state`
 
-On create, it symlinks these to:
-
-- `$HOME/.config/gh`
-- `$HOME/.local/share/gh`
+On create, it symlinks these to `$HOME/.config/gh` and `$HOME/.local/share/gh` in the container.
 
 ## Release Notes
+
+## 1.1.0 - 2026-03-28
+- Use bind mounts from host `~/.config/gh` and `~/.local/share/gh` instead of Docker volumes for persistent state.
 
 ## 1.0.0 - 2026-03-26
 - Initial release.

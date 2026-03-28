@@ -33,10 +33,13 @@ Pin a specific Codex version when you need deterministic builds:
 
 ## Persistent State
 
-This feature uses a shared volume named `codex` mounted at `/var/lib/codex`.  
-On container creation, it links `/var/lib/codex` to `$HOME/.codex`, so auth and configuration are preserved across rebuilds of the same feature-enabled devcontainer.
+This feature bind mounts `~/.codex` from the host to `/var/lib/codex` in the container.
+On container creation, it links `/var/lib/codex` to `$HOME/.codex`, so auth and configuration are preserved across rebuilds.
 
 ## Release Notes
+
+## 1.1.0 - 2026-03-28
+- Use bind mount from host `~/.codex` instead of a Docker volume for persistent state.
 
 ## 1.0.0 - 2026-03-26
 - Initial release.
