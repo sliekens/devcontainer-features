@@ -3,6 +3,8 @@ set -euo pipefail
 
 CLAUDE_STATE_DIR="/var/lib/claude"
 CLAUDE_HOME_LINK="$HOME/.claude"
+CLAUDE_JSON_STATE="/var/lib/claude.json"
+CLAUDE_JSON_HOME_LINK="$HOME/.claude.json"
 
 run_privileged() {
     if [ "$(id -u)" -eq 0 ]; then
@@ -36,3 +38,16 @@ elif [ -e "$CLAUDE_HOME_LINK" ]; then
 fi
 
 ln --symbolic --force --no-dereference "$CLAUDE_STATE_DIR" "$CLAUDE_HOME_LINK"
+
+if [ -f "$CLAUDE_JSON_STATE" ] || [ ! -e "$CLAUDE_JSON_STATE" ]; then
+    if [ -L "$CLAUDE_JSON_HOME_LINK" ]; then
+        if [ "$(readlink "$CLAUDE_JSON_HOME_LINK")" = "$CLAUDE_JSON_STATE" ]; then
+            exit 0
+        fi
+        rm -f "$CLAUDE_JSON_HOME_LINK"
+    elif [ -e "$CLAUDE_JSON_HOME_LINK" ]; then
+        run_privileged cp -a "$CLAUDE_JSON_HOME_LINK" "$CLAUDE_JSON_STATE"
+        rm -f "$CLAUDE_JSON_HOME_LINK"
+    fi
+    ln --symbolic --force "$CLAUDE_JSON_STATE" "$CLAUDE_JSON_HOME_LINK"
+fi
