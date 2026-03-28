@@ -35,6 +35,7 @@
         }
     },
     "containerEnv": {
+        "ASPIRE_ENABLE_CONTAINER_TUNNEL": "true",
         "ASPIRE_CLI_TELEMETRY_OPTOUT": "1"
     }
 }
