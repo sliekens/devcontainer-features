@@ -33,6 +33,7 @@ Reference features in your `devcontainer.json`:
 | [`copilot`](src/copilot/README.md) | Installs the GitHub `copilot` CLI from official release assets and persists shared `~/.copilot` state across devcontainers. |
 | [`github-cli`](src/github-cli/README.md) | Wraps the official `gh` (GitHub CLI) feature and adds persistent volume mounts for config and state |
 | [`mono`](src/mono/README.md) | Installs `mono-complete` from the official Mono stable repository |
+| [`opencode`](src/opencode/README.md) | Installs `opencode` from official GitHub release assets and persists shared state across devcontainers. |
 | [`tea`](src/tea/README.md) | Installs the Gitea CLI (`tea`) from Gitea releases and enables shell completion via bash_completion.d and zsh site-functions. |
 <!-- END FEATURES TABLE -->
 
