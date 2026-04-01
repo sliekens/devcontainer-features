@@ -20,8 +20,23 @@ Installs GitHub Copilot CLI from official release assets and persists shared `~/
 
 ## Persistent State
 
-This feature bind mounts `~/.copilot` from the host to `/var/lib/copilot` in the container.
-On create, it links that directory to `$HOME/.copilot` so auth and CLI state can be reused.
+| Host path | Container path | Purpose |
+|-----------|---------------|---------|
+| `~/.copilot` | `/var/lib/copilot` | Auth and CLI state |
+
+This directory is bind-mounted from the host so that auth is preserved across container rebuilds.
+
+Because Docker cannot bind-mount a directory that does not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create this directory on the host before the container starts:
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/copilot:1": {}
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.copilot\""
+}
+```
 
 ## Release Notes
 

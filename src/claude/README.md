@@ -20,12 +20,25 @@ Installs the official Anthropic Claude CLI using the upstream installer (`https:
 
 ## Persistent State
 
-This feature bind mounts `~/.claude` and `~/.claude.json` from the host into the container so auth and settings are reused across devcontainers.
+| Host path | Container path | Purpose |
+|-----------|---------------|---------|
+| `~/.claude` | `/var/lib/claude` | Auth, settings, and conversation history |
+| `~/.claude.json` | `/var/lib/claude.json` | Settings file |
 
-Because Docker cannot bind-mount a file that does not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create `~/.claude.json` on the host before the container starts:
+These paths are bind-mounted from the host so that auth and settings are preserved across container rebuilds.
+
+Because Docker cannot bind-mount paths that do not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create these paths on the host before the container starts:
 
 ```json
-"initializeCommand": "[ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\""
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/claude:1": {
+            "version": "stable"
+        }
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.claude\" && { [ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\"; }"
+}
 ```
 
 ## Release Notes
