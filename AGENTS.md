@@ -74,3 +74,22 @@ Required tools (installed in .devcontainer):
 - The registry does not require authentication (LAN-only)
 - Features are published with semver tags: `:1`, `:1.0`, `:1.0.0`, `:latest`
 - Collection metadata (`ghcr.io/sliekens:latest`) has a known pull issue with the registry - this doesn't affect feature usage
+
+## Feature-specific Notes
+
+### opencode
+
+opencode uses XDG base directories (not a single `~/.opencode` dir):
+
+| Directory | Purpose |
+|-----------|---------|
+| `~/.local/share/opencode` | Data **and** auth credentials (`auth.json` lives here) |
+| `~/.config/opencode` | User configuration (`opencode.json`/`opencode.jsonc`) |
+| `~/.cache/opencode` | Ephemeral binary cache — not worth persisting |
+| `~/.local/state/opencode` | Runtime state — not worth persisting |
+
+Both data and config are bind-mounted because auth lives in the data dir (not config). This was confirmed by reading `packages/opencode/src/global/index.ts` and `packages/opencode/src/auth/index.ts` in the [anomalyco/opencode](https://github.com/anomalyco/opencode) repo.
+
+The upstream install script (`https://opencode.ai/install` → redirects to a script on the `dev` branch) places the binary in `$HOME/.opencode/bin/opencode` and modifies shell rc files. This feature vendors the install by downloading the release asset (`opencode-linux-{x64,arm64}.tar.gz`) from GitHub, which contains a single `opencode` binary at the archive root.
+
+Release tags use the format `v{semver}` (e.g. `v1.3.13`).
