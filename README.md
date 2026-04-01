@@ -1,6 +1,6 @@
 # My Dev Container Features
 
-A collection of [dev container features](https://containers.dev/implementors/features/) for personal use.
+A collection of opinionated [dev container features](https://containers.dev/implementors/features/) built for my own workflows — open for anyone to use.
 
 ## Usage
 
