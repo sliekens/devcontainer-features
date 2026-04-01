@@ -20,8 +20,23 @@ Installs the Bitwarden Secrets Manager CLI (`bws`) binary from Bitwarden release
 
 ## Persistent State
 
-This feature bind mounts `~/.config/bws` from the host to `/var/lib/bitwarden-secrets-manager` in the container.
-On create, it links that directory to `$HOME/.config/bws` so credentials and CLI state can be persisted across recreates.
+| Host path | Container path | Purpose |
+|-----------|---------------|---------|
+| `~/.config/bws` | `/var/lib/bitwarden-secrets-manager` | Credentials and CLI state |
+
+This directory is bind-mounted from the host so that credentials are preserved across container rebuilds.
+
+Because Docker cannot bind-mount a directory that does not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create this directory on the host before the container starts:
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/bitwarden-secrets-manager:1": {}
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.config/bws\""
+}
+```
 
 ## Release Notes
 

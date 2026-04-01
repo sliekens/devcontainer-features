@@ -20,8 +20,23 @@ Installs the official Bitwarden CLI binary from Bitwarden release assets.
 
 ## Persistent State
 
-This feature bind mounts `~/.config/Bitwarden CLI` from the host into the container.
-The on-create hook ensures the mounted directory is available and writable.
+| Host path | Container path | Purpose |
+|-----------|---------------|---------|
+| `~/.config/Bitwarden CLI` | `/home/vscode/.config/Bitwarden CLI` | Vault data and session |
+
+This directory is bind-mounted from the host so that vault data and session are preserved across container rebuilds.
+
+Because Docker cannot bind-mount a directory that does not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create this directory on the host before the container starts:
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/bitwarden-cli:1": {}
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.config/Bitwarden CLI\""
+}
+```
 
 ## Release Notes
 

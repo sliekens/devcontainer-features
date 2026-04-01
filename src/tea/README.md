@@ -20,8 +20,23 @@ Installs the [Gitea CLI](https://gitea.com/gitea/tea) from Gitea releases and co
 
 ## Persistent State
 
-This feature bind mounts `~/.config/tea` from the host to `/var/lib/tea-cli` in the container.
-On create, it links that directory to `$HOME/.config/tea` for stable user configuration.
+| Host path | Container path | Purpose |
+|-----------|---------------|---------|
+| `~/.config/tea` | `/var/lib/tea-cli` | CLI configuration and auth tokens |
+
+This directory is bind-mounted from the host so that configuration is preserved across container rebuilds.
+
+Because Docker cannot bind-mount a directory that does not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create this directory on the host before the container starts:
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/tea:1": {}
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.config/tea\""
+}
+```
 
 ## Release Notes
 

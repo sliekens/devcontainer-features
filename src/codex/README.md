@@ -33,8 +33,23 @@ Pin a specific Codex version when you need deterministic builds:
 
 ## Persistent State
 
-This feature bind mounts `~/.codex` from the host to `/var/lib/codex` in the container.
-On container creation, it links `/var/lib/codex` to `$HOME/.codex`, so auth and configuration are preserved across rebuilds.
+| Host path | Container path | Purpose |
+|-----------|---------------|---------|
+| `~/.codex` | `/var/lib/codex` | Auth and configuration |
+
+This directory is bind-mounted from the host so that auth and configuration are preserved across container rebuilds.
+
+Because Docker cannot bind-mount a directory that does not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create this directory on the host before the container starts:
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/codex:1": {}
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.codex\""
+}
+```
 
 ## Release Notes
 

@@ -20,8 +20,23 @@ Installs the .NET Aspire CLI.
 
 ## Persistent State
 
-This feature bind mounts `~/.aspire` from the host to `/var/lib/aspire-cli` in the container.
-On create, it links `/var/lib/aspire-cli` to `$HOME/.aspire` so CLI state persists across container rebuilds.
+| Host path | Container path | Purpose |
+|-----------|---------------|---------|
+| `~/.aspire` | `/var/lib/aspire-cli` | CLI state and configuration |
+
+This directory is bind-mounted from the host so that CLI state is preserved across container rebuilds.
+
+Because Docker cannot bind-mount a directory that does not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create this directory on the host before the container starts:
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/aspire-cli:1": {}
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.aspire\""
+}
+```
 
 ## Release Notes
 

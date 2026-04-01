@@ -16,12 +16,24 @@ This feature does not expose configurable options.
 
 ## Persistent State
 
-This feature bind mounts directories from the host user's home:
+| Host path | Container path | Purpose |
+|-----------|---------------|---------|
+| `~/.config/gh` | `/var/lib/github-cli/config` | Configuration |
+| `~/.local/share/gh` | `/var/lib/github-cli/state` | State |
 
-- `~/.config/gh` → `/var/lib/github-cli/config`
-- `~/.local/share/gh` → `/var/lib/github-cli/state`
+These directories are bind-mounted from the host so that auth and configuration are preserved across container rebuilds.
 
-On create, it symlinks these to `$HOME/.config/gh` and `$HOME/.local/share/gh` in the container.
+Because Docker cannot bind-mount a directory that does not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create these directories on the host before the container starts:
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/github-cli:1": {}
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.config/gh\" \"$HOME/.local/share/gh\""
+}
+```
 
 ## Release Notes
 
