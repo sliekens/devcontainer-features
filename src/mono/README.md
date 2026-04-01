@@ -1,6 +1,9 @@
 # Mono (mono)
 
-Installs the Mono runtime and tooling.
+> [!WARNING]
+> Mono is now maintained by [WineHQ](https://www.winehq.org/news/2025030801) (since August 2024), but they do not yet offer pre-built binaries or apt packages. This feature installs from Microsoft's last-published apt repository (`download.mono-project.com`), which is frozen at the final Microsoft build (February 2024) and expected to remain available for a few more years. The install script uses workarounds to make it work on current systems and may break without notice.
+
+Installs `mono-complete` from the [official Mono stable repository](https://www.mono-project.com/download/stable/#download-lin-debian). The installed version is whatever the Mono project last published to that repository — no version override is offered because Mono is no longer actively developed and only one version is effectively available.
 
 ## Example Usage
 
