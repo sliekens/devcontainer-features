@@ -23,9 +23,10 @@
         "ghcr.io/sliekens/devcontainer-features/copilot:1": {},
         "ghcr.io/sliekens/devcontainer-features/tea:1": {},
         "ghcr.io/sliekens/devcontainer-features/codex:1": {},
-        "ghcr.io/sliekens/devcontainer-features/claude:1": {}
+        "ghcr.io/sliekens/devcontainer-features/claude:1": {},
+        "ghcr.io/sliekens/devcontainer-features/opencode:1": {}
     },
     "remoteUser": "node",
-    "initializeCommand": "[ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\"",
+    "initializeCommand": "[ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\" && mkdir -p \"$HOME/.local/share/opencode\" \"$HOME/.config/opencode\"",
     "postCreateCommand": "sudo npm install -g @devcontainers/cli && (command -v oras || (curl -sLO https://github.com/oras-project/oras/releases/download/v1.2.0/oras_1.2.0_linux_amd64.tar.gz && sudo tar -xzf oras_1.2.0_linux_amd64.tar.gz -C /usr/local/bin oras && rm oras_1.2.0_linux_amd64.tar.gz))"
 }
