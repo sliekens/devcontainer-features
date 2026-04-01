@@ -1,0 +1,43 @@
+{
+    "id": "opencode",
+    "name": "opencode",
+    "version": "1.0.0",
+    "description": "Installs `opencode` from official GitHub release assets and persists shared state across devcontainers.",
+    "documentationURL": "https://opencode.ai/docs/",
+    "licenseURL": "https://github.com/anomalyco/opencode/blob/main/LICENSE",
+    "keywords": [
+        "opencode",
+        "ai",
+        "cli"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use \"latest\" for the most recent release, or specify a version like \"1.3.13\" or \"v1.3.13\"."
+        }
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.local/share/opencode",
+            "target": "/var/lib/opencode"
+        },
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.config/opencode",
+            "target": "/var/lib/opencode-config"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/opencode/on_create.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "sst-dev.opencode"
+            ]
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

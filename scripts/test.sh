@@ -79,6 +79,28 @@ check_requirements() {
     fi
 }
 
+# Pre-create bind mount source directories declared in a feature's devcontainer-feature.json.
+# Features may declare bind mounts with source="${localEnv:HOME}/..." which require the host
+# directories to exist before Docker can mount them (Docker won't create intermediate directories).
+pre_create_bind_mount_sources() {
+    local feature_id="$1"
+    local feature_json="$REPO_ROOT/src/$feature_id/devcontainer-feature.json"
+    [[ -f "$feature_json" ]] || return 0
+
+    local sources
+    mapfile -t sources < <(
+        jq -r '.mounts[]? | select(.type == "bind") | .source' "$feature_json" 2>/dev/null \
+            | sed "s|\${localEnv:HOME}|$HOME|g"
+    )
+
+    for src in "${sources[@]}"; do
+        if [[ "$src" == /* ]] && [[ ! -e "$src" ]]; then
+            log_info "Pre-creating bind mount source: $src"
+            mkdir -p "$src"
+        fi
+    done
+}
+
 # Main function
 main() {
     local feature_filter=""
@@ -94,18 +116,12 @@ main() {
     
     if [[ -n "$feature_filter" ]]; then
         log_info "Testing feature: $feature_filter"
+        pre_create_bind_mount_sources "$feature_filter"
         mapfile -t test_args < <(build_test_args "${extra_args[@]}")
-        if [[ ${#extra_args[@]} -gt 0 ]]; then
-            devcontainer features test \
-                --project-folder . \
-                -f "$feature_filter" \
-                "${test_args[@]}"
-        else
-            devcontainer features test \
-                --project-folder . \
-                -f "$feature_filter" \
-                "${test_args[@]}"
-        fi
+        devcontainer features test \
+            --project-folder . \
+            -f "$feature_filter" \
+            "${test_args[@]}"
     else
         log_info "Testing all features..."
         mapfile -t test_args < <(build_test_args "${extra_args[@]}")
@@ -124,6 +140,7 @@ main() {
             if [[ -f "$feature_dir/devcontainer-feature.json" ]]; then
                 local feature_id
                 feature_id=$(basename "$feature_dir")
+                pre_create_bind_mount_sources "$feature_id"
                 log_info "Testing $feature_id..."
                 devcontainer features test \
                     --project-folder . \
@@ -139,6 +156,7 @@ main() {
             if [[ -f "$feature_dir/devcontainer-feature.json" ]]; then
                 local feature_id
                 feature_id=$(basename "$feature_dir")
+                pre_create_bind_mount_sources "$feature_id"
                 devcontainer features test \
                     --project-folder . \
                     -f "$feature_id" \
