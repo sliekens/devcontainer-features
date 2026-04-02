@@ -37,12 +37,20 @@ fi
 
 ASPIRE_INSTALL_URL="https://aspire.dev/install.sh"
 TARGET_SCRIPT="/tmp/aspire-install.sh"
-QUALITY_OPTION="${QUALITY:-release}"
+QUALITY_OPTION="${QUALITY:-}"
+VERSION_OPTION="${VERSION:-latest}"
 
 curl --fail --silent --show-error --location "$ASPIRE_INSTALL_URL" --output "$TARGET_SCRIPT"
 
 run_installer() {
-    bash "$TARGET_SCRIPT" --install-path /usr/local/bin --quality "$QUALITY_OPTION"
+    local args=(--install-path /usr/local/bin)
+    if [[ -n "$QUALITY_OPTION" ]]; then
+        args+=(--quality "$QUALITY_OPTION")
+    fi
+    if [[ "$VERSION_OPTION" != "latest" ]]; then
+        args+=(--version "$VERSION_OPTION")
+    fi
+    bash "$TARGET_SCRIPT" "${args[@]}"
 }
 
 run_installer

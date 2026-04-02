@@ -6,17 +6,16 @@ Installs the .NET Aspire CLI.
 
 ```json
 "features": {
-    "ghcr.io/sliekens/devcontainer-features/aspire-cli:1": {
-        "quality": "release"
-    }
+    "ghcr.io/sliekens/devcontainer-features/aspire-cli:1": {}
 }
 ```
 
 ## Options
 
-| Option    | Type   | Default   | Description                                                |
-| --------- | ------ | --------- | ---------------------------------------------------------- |
+| Option    | Type   | Default  | Description                                                                    |
+| --------- | ------ | -------- | ------------------------------------------------------------------------------ |
 | `quality` | string | `release` | Quality to download. Allowed: `release`, `staging`, `dev`. |
+| `version` | string | `latest` | Version to install (e.g. `13.2.1`). Defaults to latest when unspecified.      |
 
 ## Persistent State
 
@@ -39,6 +38,11 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 ```
 
 ## Release Notes
+
+## 1.4.0 - 2026-04-02
+
+- Added `version` option to install a specific version (e.g. `13.2.1`).
+- Made `quality` optional; omits `--quality` from the vendor script when unspecified, deferring to the vendor default (`release`).
 
 ## 1.3.0 - 2026-03-28
 - Use bind mount from host `~/.aspire` instead of a Docker volume for persistent state.

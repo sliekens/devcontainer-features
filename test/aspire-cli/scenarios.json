@@ -1,4 +1,13 @@
 {
+  "pinned-version": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils": {},
+      "aspire-cli": {
+        "version": "13.2.1"
+      }
+    }
+  },
   "staging": {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {

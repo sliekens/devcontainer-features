@@ -1,19 +1,25 @@
 {
     "id": "aspire-cli",
     "name": "Aspire CLI",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "documentationURL": "https://aspire.dev/docs/",
     "description": "Installs the .NET Aspire CLI (`aspire`)",
     "options": {
         "quality": {
             "type": "string",
             "enum": [
+                "",
                 "release",
                 "staging",
                 "dev"
             ],
-            "default": "release",
+            "default": "",
             "description": "Quality to download."
+        },
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install (e.g. '13.2'). Defaults to latest."
         }
     },
     "mounts": [
