@@ -1,0 +1,35 @@
+{
+    "id": "mistral-vibe",
+    "name": "Mistral Vibe",
+    "version": "1.0.0",
+    "description": "Installs Mistral Vibe CLI coding agent using Python virtual environment and persists shared state across devcontainers.",
+    "documentationURL": "https://mistral.ai/products/vibe",
+    "licenseURL": "https://github.com/mistralai/mistral-vibe/blob/main/LICENSE",
+    "keywords": [
+        "mistral",
+        "vibe",
+        "ai",
+        "cli",
+        "coding",
+        "agent",
+        "python"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Uses pip's version resolution."
+        }
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.vibe",
+            "target": "/var/lib/vibe"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/vibe/on_create.sh",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
