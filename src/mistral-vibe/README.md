@@ -86,6 +86,10 @@ After installation, these commands are available:
 
 ## Release Notes
 
+### 1.0.1
+- Fix absolute paths in `~/.vibe` config by replacing with `~`
+- Ensures compatibility across different home directory paths
+
 ### 1.0.0
 - Initial release
 - Uses uv for installation
