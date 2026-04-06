@@ -43,13 +43,25 @@ Example:
 }
 ```
 
-## State Persistence
+## Persistent State
 
-The feature binds `~/.vibe` from your local machine to `/var/lib/vibe` in the container, preserving:
-- API keys and configuration
-- Session history
-- Trusted folders
-- Custom prompts and agents
+| Host path | Container path | Purpose |
+|-----------|---------------|---------|
+| `~/.vibe` | `/var/lib/vibe` | API keys, configuration, session history |
+
+This directory is bind-mounted from the host so that state is preserved across container rebuilds.
+
+Because Docker cannot bind-mount a directory that does not yet exist, consuming `devcontainer.json` files should add an `initializeCommand` to pre-create this directory on the host before the container starts:
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1": {}
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.vibe\""
+}
+```
 
 ## Installation Process
 
