@@ -37,3 +37,13 @@ elif [ -e "$VIBE_HOME_LINK" ]; then
 fi
 
 ln --symbolic --force --no-dereference "$VIBE_STATE_DIR" "$VIBE_HOME_LINK"
+
+# Replace absolute paths in ~/.vibe config with ~
+if [ -d "$VIBE_STATE_DIR" ]; then
+    find "$VIBE_STATE_DIR" -type f \( -name "*.json" -o -name "*.yaml" -o -name "*.yml" \) | while read -r file; do
+        if command -v sed >/dev/null 2>&1; then
+            # Replace absolute home directory paths with ~
+            sed -i "s|/home/[^/]*|~|g" "$file"
+        fi
+    done
+fi
