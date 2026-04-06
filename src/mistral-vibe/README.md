@@ -30,7 +30,7 @@ Version to install. Default: `"latest"`
 
 - `"latest"` - Install the latest version
 - Specific versions like `"2.7.3"`
-- Version ranges supported by uv
+- Version ranges supported by pip
 
 Example:
 ```json
@@ -86,13 +86,18 @@ After installation, these commands are available:
 
 ## Release Notes
 
+### 1.0.2
+
+- Fix absolute paths in `~/.vibe/config.toml` by replacing with `~`
+
 ### 1.0.1
 - Fix absolute paths in `~/.vibe` config by replacing with `~`
+    - Known issue: paths in `config.tom` are not replaced
 - Ensures compatibility across different home directory paths
 
 ### 1.0.0
 - Initial release
-- Uses uv for installation
+- Uses pip for installation
 - State persistence for `.vibe` directory
 - Version selection support
 
