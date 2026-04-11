@@ -26,6 +26,7 @@ Add this feature to your `devcontainer.json`:
 ## Options
 
 ### `version` (string)
+
 Version to install. Default: `"latest"`
 
 - `"latest"` - Install the latest version
@@ -33,6 +34,7 @@ Version to install. Default: `"latest"`
 - Version ranges supported by pip
 
 Example:
+
 ```json
 {
   "features": {
@@ -45,8 +47,8 @@ Example:
 
 ## Persistent State
 
-| Host path | Container path | Purpose |
-|-----------|---------------|---------|
+| Host path | Container path  | Purpose                                  |
+| --------- | --------------- | ---------------------------------------- |
 | `~/.vibe` | `/var/lib/vibe` | API keys, configuration, session history |
 
 This directory is bind-mounted from the host so that state is preserved across container rebuilds.
@@ -55,11 +57,11 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 
 ```json
 {
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-    "features": {
-        "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1": {}
-    },
-    "initializeCommand": "mkdir -p \"$HOME/.vibe\""
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1": {}
+  },
+  "initializeCommand": "mkdir -p \"$HOME/.vibe\""
 }
 ```
 
@@ -75,6 +77,7 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 ## Commands Available
 
 After installation, these commands are available:
+
 - `vibe` - Main Mistral Vibe CLI
 - `vibe-acp` - Agent Client Protocol mode
 
@@ -86,16 +89,22 @@ After installation, these commands are available:
 
 ## Release Notes
 
+### 1.1.0
+
+- Add `nmallet.vscode-mistral-vibe` VSCode extension to devcontainer feature
+
 ### 1.0.2
 
 - Fix absolute paths in `~/.vibe/config.toml` by replacing with `~`
 
 ### 1.0.1
+
 - Fix absolute paths in `~/.vibe` config by replacing with `~`
-    - Known issue: paths in `config.tom` are not replaced
+  - Known issue: paths in `config.tom` are not replaced
 - Ensures compatibility across different home directory paths
 
 ### 1.0.0
+
 - Initial release
 - Uses pip for installation
 - State persistence for `.vibe` directory
@@ -104,16 +113,21 @@ After installation, these commands are available:
 ## Troubleshooting
 
 ### "vibe command not found"
+
 Ensure `/usr/local/bin` is in your PATH. The feature creates symlinks there for system-wide access.
 
 ### Installation fails
+
 Make sure your container has:
+
 - Internet access
 - Sufficient disk space
 - Supported package manager (apt, apk, dnf, or yum)
 
 ### State not persisting
+
 Verify that:
+
 - The bind mount is working correctly
 - The `onCreateCommand` is being executed
 - You're not overriding the `.vibe` directory in your Dockerfile

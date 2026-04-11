@@ -1,7 +1,7 @@
 {
     "id": "mistral-vibe",
     "name": "Mistral Vibe",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "description": "Installs Mistral Vibe CLI coding agent using Python virtual environment and persists shared state across devcontainers.",
     "documentationURL": "https://mistral.ai/products/vibe",
     "licenseURL": "https://github.com/mistralai/mistral-vibe/blob/main/LICENSE",
@@ -29,6 +29,13 @@
         }
     ],
     "onCreateCommand": "/usr/local/share/vibe/on_create.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "nmallet.vscode-mistral-vibe"
+            ]
+        }
+    },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils"
     ]
