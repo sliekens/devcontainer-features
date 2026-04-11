@@ -132,10 +132,18 @@ main() {
     log_info "Publishing target: $target"
     log_info "Registry: ${REGISTRY}/${NAMESPACE}"
 
+    local log_level_args=()
+    if [[ "${TRACE:-}" == "1" ]]; then
+        log_level_args=(--log-level trace)
+    elif [[ "${DEBUG:-}" == "1" ]]; then
+        log_level_args=(--log-level debug)
+    fi
+
     devcontainer features publish \
         "$target" \
         --registry "$REGISTRY" \
-        --namespace "$NAMESPACE"
+        --namespace "$NAMESPACE" \
+        "${log_level_args[@]}"
 
     link_packages_to_repo "$target"
 
