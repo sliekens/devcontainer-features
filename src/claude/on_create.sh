@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CLAUDE_STATE_DIR="/var/lib/claude"
+CLAUDE_STATE_DIR="/var/lib/claude-container/data"
 CLAUDE_HOME_LINK="$HOME/.claude"
-CLAUDE_JSON_STATE="/var/lib/claude.json"
+CLAUDE_JSON_STATE="/var/lib/claude-container/claude.json"
 CLAUDE_JSON_HOME_LINK="$HOME/.claude.json"
 
 run_privileged() {

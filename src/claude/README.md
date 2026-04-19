@@ -22,8 +22,8 @@ Installs the official Anthropic Claude CLI using the upstream installer (`https:
 
 | Host path | Container path | Purpose |
 |-----------|---------------|---------|
-| `~/.claude` | `/var/lib/claude` | Auth, settings, and conversation history |
-| `~/.claude.json` | `/var/lib/claude.json` | Settings file |
+| `~/.claude` | `/var/lib/claude-container/data` | Auth, settings, and conversation history |
+| `~/.claude.json` | `/var/lib/claude-container/claude.json` | Settings file |
 
 These paths are bind-mounted from the host so that auth and settings are preserved across container rebuilds.
 
@@ -42,6 +42,9 @@ Because Docker cannot bind-mount paths that do not yet exist, consuming `devcont
 ```
 
 ## Release Notes
+
+## 1.2.1 - 2026-04-18
+- Fix `EACCES: permission denied` errors when Claude creates its lock directory. The bind mount targets moved from `/var/lib/claude` and `/var/lib/claude.json` to `/var/lib/claude-container/data` and `/var/lib/claude-container/claude.json`. The parent directory `/var/lib/claude-container/` is now owned by the container user so Claude can create adjacent lock directories without hitting permission errors.
 
 ## 1.2.0 - 2026-03-28
 - Also bind mount `~/.claude.json` from the host for persistent settings.
