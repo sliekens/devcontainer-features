@@ -41,6 +41,21 @@ Because Docker cannot bind-mount paths that do not yet exist, consuming `devcont
 }
 ```
 
+## Known Issues
+
+Claude stores absolute paths in its settings, e.g. for marketplace plugins. If you use the CLI in a non-devcontainer environment on the same host, these paths may not resolve correctly inside the container.
+
+To work around this, you can replace the absolute paths to home with `~`.
+
+For example, in `~/.claude/plugins/known_marketplaces.json`, change:
+
+``` diff
+-    "installLocation": "/home/steven/.claude/plugins/marketplaces/claude-plugins-official",
++    "installLocation": "~/.claude/plugins/marketplaces/claude-plugins-official",
+```
+
+A scripted solution to this is being considered for a future release, but for now this can be done manually as needed.
+
 ## Release Notes
 
 ## 1.2.1 - 2026-04-18
