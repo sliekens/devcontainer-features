@@ -43,20 +43,29 @@ Because Docker cannot bind-mount paths that do not yet exist, consuming `devcont
 
 ## Known Issues
 
-Claude stores absolute paths in its settings, e.g. for marketplace plugins. If you use the CLI in a non-devcontainer environment on the same host, these paths may not resolve correctly inside the container.
+Claude stores absolute paths in its settings, e.g. for marketplace plugins. If the container username differs from the host username (e.g. `vscode` vs `steven`), the container home directory will be `/home/vscode` while the bind-mounted settings files contain paths rooted at `/home/steven`. These paths will not resolve correctly inside the container.
 
-To work around this, you can replace the absolute paths to home with `~`.
+Add the [`rename-user`](../rename-user/README.md) feature alongside this one. It reads `remoteUser` and renames the default `vscode` user at image build time — no custom Dockerfile needed.
 
-For example, in `~/.claude/plugins/known_marketplaces.json`, change:
-
-``` diff
--    "installLocation": "/home/steven/.claude/plugins/marketplaces/claude-plugins-official",
-+    "installLocation": "~/.claude/plugins/marketplaces/claude-plugins-official",
+```json
+{
+    "remoteUser": "${localEnv:USER}",
+    "features": {
+        "ghcr.io/sliekens/devcontainer-features/rename-user:1": {},
+        "ghcr.io/sliekens/devcontainer-features/claude:1": {
+            "version": "stable"
+        }
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.claude\" && { [ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\"; }"
+}
 ```
 
-A scripted solution to this is being considered for a future release, but for now this can be done manually as needed.
+The container home directory matches the host home directory, so all absolute paths in Claude's settings resolve correctly. Auth, settings, and history are shared between the container and any Claude CLI installed directly on the host.
 
 ## Release Notes
+
+## 1.2.2 - 2026-05-10
+- Install after `rename-user` when present, so `chown` in `install.sh` resolves the container username correctly.
 
 ## 1.2.1 - 2026-04-18
 - Fix `EACCES: permission denied` errors when Claude creates its lock directory. The bind mount targets moved from `/var/lib/claude` and `/var/lib/claude.json` to `/var/lib/claude-container/data` and `/var/lib/claude-container/claude.json`. The parent directory `/var/lib/claude-container/` is now owned by the container user so Claude can create adjacent lock directories without hitting permission errors.

@@ -1,7 +1,7 @@
 {
     "id": "claude",
     "name": "Claude Code",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "Installs `claude` (Claude Code) via the upstream native installer and persists shared state across devcontainers.",
     "documentationURL": "https://code.claude.com/docs/en/overview",
     "keywords": [
@@ -38,6 +38,7 @@
         }
     },
     "installsAfter": [
-        "ghcr.io/devcontainers/features/common-utils"
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/sliekens/devcontainer-features/rename-user"
     ]
 }

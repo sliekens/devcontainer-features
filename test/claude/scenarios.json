@@ -1,0 +1,13 @@
+{
+  "renamed-user": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "remoteUser": "testuser",
+    "features": {
+      "rename-user": {},
+      "claude": {
+        "version": "stable"
+      }
+    },
+    "initializeCommand": "mkdir -p \"$HOME/.claude\" && { [ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\"; }"
+  }
+}
