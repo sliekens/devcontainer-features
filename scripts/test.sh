@@ -96,7 +96,12 @@ pre_create_bind_mount_sources() {
     for src in "${sources[@]}"; do
         if [[ "$src" == /* ]] && [[ ! -e "$src" ]]; then
             log_info "Pre-creating bind mount source: $src"
-            mkdir -p "$src"
+            if [[ "$(basename "$src")" == *.* ]]; then
+                mkdir -p "$(dirname "$src")"
+                touch "$src"
+            else
+                mkdir -p "$src"
+            fi
         fi
     done
 }
