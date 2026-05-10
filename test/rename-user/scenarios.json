@@ -1,0 +1,9 @@
+{
+    "renamed": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "remoteUser": "testuser",
+        "features": {
+            "rename-user": {}
+        }
+    }
+}

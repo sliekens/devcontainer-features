@@ -35,6 +35,7 @@ Reference features in your `devcontainer.json`:
 | [`mistral-vibe`](src/mistral-vibe/README.md) | Installs Mistral Vibe CLI coding agent using Python virtual environment and persists shared state across devcontainers. |
 | [`mono`](src/mono/README.md) | Installs `mono-complete` from the official Mono stable repository |
 | [`opencode`](src/opencode/README.md) | Installs `opencode` from official GitHub release assets and persists shared state across devcontainers. |
+| [`rename-user`](src/rename-user/README.md) | Renames the default container user (`vscode`) to match the configured `remoteUser`, preserving sudo access. |
 | [`tea`](src/tea/README.md) | Installs the Gitea CLI (`tea`) from Gitea releases and enables shell completion via bash_completion.d and zsh site-functions. |
 <!-- END FEATURES TABLE -->
 
