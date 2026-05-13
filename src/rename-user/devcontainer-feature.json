@@ -1,7 +1,7 @@
 {
     "id": "rename-user",
     "name": "Rename Container User",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Renames the default container user (`vscode`) to match the configured `remoteUser`, preserving sudo access.",
     "options": {},
     "installsAfter": [

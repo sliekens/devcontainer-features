@@ -14,5 +14,7 @@ fi
 
 usermod -l "$TARGET" -d "/home/$TARGET" -m vscode
 groupmod -n "$TARGET" vscode
+# Update supplementary group memberships — usermod -l doesn't update /etc/group member lists
+sed -i "s/\bvscode\b/$TARGET/g" /etc/group
 sed -i "s/vscode/$TARGET/g" /etc/sudoers.d/vscode
 mv /etc/sudoers.d/vscode "/etc/sudoers.d/$TARGET"

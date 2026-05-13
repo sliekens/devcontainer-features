@@ -26,5 +26,8 @@ Set `remoteUser` to `${localEnv:USER}` and add this feature. No Dockerfile custo
 
 ## Release Notes
 
+## 1.0.1 - 2026-05-13
+- Fix supplementary group memberships (e.g. `docker`) not being updated after rename, causing features like `docker-in-docker` that add the user to groups during build to have no effect in the container session.
+
 ## 1.0.0 - 2026-05-10
 - Initial release.
