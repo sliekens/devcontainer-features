@@ -48,6 +48,27 @@ Fix this by forcing `docker-in-docker` to use `vscode` (the pre-rename username)
 
 This ensures `docker-in-docker` adds `vscode` to the `docker` group, and rename-user then updates that membership to the final username.
 
+### node
+
+The `node` feature determines which user to configure nvm for by reading `_REMOTE_USER`. The same problem applies: when `remoteUser` is set to your host username, that user doesn't exist yet when `node` runs, causing it to fall back to `root`.
+
+Fix this the same way — pass `"username": "vscode"` to `node`:
+
+```json
+{
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "remoteUser": "${localEnv:USER}",
+    "features": {
+        "ghcr.io/devcontainers/features/node:2": {
+            "username": "vscode"
+        },
+        "ghcr.io/sliekens/devcontainer-features/rename-user:1": {}
+    }
+}
+```
+
+This ensures nvm is configured for `vscode`, and rename-user then carries that setup over to the final username.
+
 ## Release Notes
 
 ## 1.0.1 - 2026-05-13
