@@ -21,7 +21,7 @@
         "ghcr.io/devcontainers/features/docker-in-docker:2": {
             "username": "vscode"
         },
-        "ghcr.io/devcontainers/features/node:1": {},
+        "ghcr.io/devcontainers/features/node:2.0.0": {},
         "ghcr.io/sliekens/devcontainer-features/rename-user:1.0.1": {},
         "ghcr.io/sliekens/devcontainer-features/github-cli:1": {},
         "ghcr.io/sliekens/devcontainer-features/copilot:1": {},
