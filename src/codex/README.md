@@ -53,6 +53,9 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 
 ## Release Notes
 
+## 1.1.1 - 2026-05-14
+- Add trailing slash to bind mount source path to mark it explicitly as a directory.
+
 ## 1.1.0 - 2026-03-28
 - Use bind mount from host `~/.codex` instead of a Docker volume for persistent state.
 

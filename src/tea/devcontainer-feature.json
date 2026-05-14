@@ -1,13 +1,13 @@
 {
     "id": "tea",
     "name": "Gitea CLI (tea)",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "documentationURL": "https://gitea.com/gitea/tea",
     "description": "Installs the Gitea CLI (`tea`) from Gitea releases and enables shell completion via bash_completion.d and zsh site-functions.",
     "mounts": [
     {
             "type": "bind",
-            "source": "${localEnv:HOME}/.config/tea",
+            "source": "${localEnv:HOME}/.config/tea/",
             "target": "/var/lib/tea-cli"
     }
     ],

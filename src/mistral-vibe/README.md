@@ -89,6 +89,10 @@ After installation, these commands are available:
 
 ## Release Notes
 
+### 1.1.1
+
+- Add trailing slash to bind mount source path to mark it explicitly as a directory.
+
 ### 1.1.0
 
 - Add `nmallet.vscode-mistral-vibe` VSCode extension to devcontainer feature

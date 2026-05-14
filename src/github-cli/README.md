@@ -37,6 +37,9 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 
 ## Release Notes
 
+## 1.1.1 - 2026-05-14
+- Add trailing slash to bind mount source paths to mark them explicitly as directories.
+
 ## 1.1.0 - 2026-03-28
 - Use bind mounts from host `~/.config/gh` and `~/.local/share/gh` instead of Docker volumes for persistent state.
 

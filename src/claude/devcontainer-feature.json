@@ -1,7 +1,7 @@
 {
     "id": "claude",
     "name": "Claude Code",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "Installs `claude` (Claude Code) via the upstream native installer and persists shared state across devcontainers.",
     "documentationURL": "https://code.claude.com/docs/en/overview",
     "keywords": [
@@ -20,7 +20,7 @@
     "mounts": [
         {
             "type": "bind",
-            "source": "${localEnv:HOME}/.claude",
+            "source": "${localEnv:HOME}/.claude/",
             "target": "/var/lib/claude-container/data"
         },
         {

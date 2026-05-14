@@ -64,6 +64,9 @@ The container home directory matches the host home directory, so all absolute pa
 
 ## Release Notes
 
+## 1.2.3 - 2026-05-14
+- Add trailing slash to bind mount source path to mark it explicitly as a directory.
+
 ## 1.2.2 - 2026-05-10
 - Install after `rename-user` when present, so `chown` in `install.sh` resolves the container username correctly.
 

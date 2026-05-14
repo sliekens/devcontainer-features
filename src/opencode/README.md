@@ -51,5 +51,8 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 
 ## Release Notes
 
+## 1.0.1 - 2026-05-14
+- Add trailing slash to bind mount source paths to mark them explicitly as directories.
+
 ## 1.0.0 - 2026-04-01
 - Initial release.

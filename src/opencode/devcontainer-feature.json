@@ -1,7 +1,7 @@
 {
     "id": "opencode",
     "name": "opencode",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Installs `opencode` from official GitHub release assets and persists shared state across devcontainers.",
     "documentationURL": "https://opencode.ai/docs/",
     "licenseURL": "https://github.com/anomalyco/opencode/blob/main/LICENSE",
@@ -20,12 +20,12 @@
     "mounts": [
         {
             "type": "bind",
-            "source": "${localEnv:HOME}/.local/share/opencode",
+            "source": "${localEnv:HOME}/.local/share/opencode/",
             "target": "/var/lib/opencode"
         },
         {
             "type": "bind",
-            "source": "${localEnv:HOME}/.config/opencode",
+            "source": "${localEnv:HOME}/.config/opencode/",
             "target": "/var/lib/opencode-config"
         }
     ],
