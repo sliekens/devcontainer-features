@@ -5,5 +5,13 @@
         "features": {
             "rename-user": {}
         }
+    },
+    "with-docker": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "remoteUser": "testuser",
+        "features": {
+            "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+            "rename-user": {}
+        }
     }
 }
