@@ -89,30 +89,20 @@ After installation, these commands are available:
 
 ## Release Notes
 
-### 1.1.1
-
+## 1.1.1 - 2026-05-14
 - Add trailing slash to bind mount source path to mark it explicitly as a directory.
 
-### 1.1.0
+## 1.1.0 - 2026-04-11
+- Add `nmallet.vscode-mistral-vibe` VSCode extension to devcontainer feature.
 
-- Add `nmallet.vscode-mistral-vibe` VSCode extension to devcontainer feature
+## 1.0.2 - 2026-04-06
+- Fix absolute paths in `~/.vibe/config.toml` by replacing with `~`.
 
-### 1.0.2
+## 1.0.1 - 2026-04-06
+- Fix absolute paths in `~/.vibe` config by replacing with `~`.
 
-- Fix absolute paths in `~/.vibe/config.toml` by replacing with `~`
-
-### 1.0.1
-
-- Fix absolute paths in `~/.vibe` config by replacing with `~`
-  - Known issue: paths in `config.tom` are not replaced
-- Ensures compatibility across different home directory paths
-
-### 1.0.0
-
-- Initial release
-- Uses pip for installation
-- State persistence for `.vibe` directory
-- Version selection support
+## 1.0.0 - 2026-04-05
+- Initial release.
 
 ## Troubleshooting
 
