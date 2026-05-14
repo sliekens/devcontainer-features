@@ -89,6 +89,9 @@ After installation, these commands are available:
 
 ## Release Notes
 
+## 1.1.2 - 2026-05-14
+- Fix wrapper script argument forwarding by writing wrappers with quoted heredocs and preserving `"$@"`.
+
 ## 1.1.1 - 2026-05-14
 - Add trailing slash to bind mount source path to mark it explicitly as a directory.
 

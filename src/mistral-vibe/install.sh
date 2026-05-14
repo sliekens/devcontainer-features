@@ -80,15 +80,15 @@ install_vibe() {
     fi
     
     # Create wrapper scripts that use the persistent virtual environment
-    cat > "$INSTALL_DIR/vibe" << EOF
+    cat > "$INSTALL_DIR/vibe" << 'EOF'
 #!/bin/bash
-exec /opt/mistral-vibe/venv/bin/python /opt/mistral-vibe/venv/bin/vibe ""$@""
+exec /opt/mistral-vibe/venv/bin/python /opt/mistral-vibe/venv/bin/vibe "$@"
 EOF
     chmod 0755 "$INSTALL_DIR/vibe"
     
-    cat > "$INSTALL_DIR/vibe-acp" << EOF
+    cat > "$INSTALL_DIR/vibe-acp" << 'EOF'
 #!/bin/bash
-exec /opt/mistral-vibe/venv/bin/python /opt/mistral-vibe/venv/bin/vibe-acp ""$@""
+exec /opt/mistral-vibe/venv/bin/python /opt/mistral-vibe/venv/bin/vibe-acp "$@"
 EOF
     chmod 0755 "$INSTALL_DIR/vibe-acp"
     
