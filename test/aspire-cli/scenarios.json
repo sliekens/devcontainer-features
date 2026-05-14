@@ -16,5 +16,13 @@
         "quality": "dev"
       }
     }
+  },
+  "setup-force": {
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "remoteUser": "vscode",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils": {},
+      "aspire-cli": {}
+    }
   }
 }

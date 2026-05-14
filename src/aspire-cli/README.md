@@ -40,6 +40,10 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 
 ## Release Notes
 
+## 1.3.2 - 2026-05-14
+- Install aspire binary to `/opt/aspire/bin` and expose it via a wrapper script so aspire bundle operations work as a nonroot user.
+- Hand ownership of `/opt/aspire` to the container user at container start so bundle locking and extraction work without elevated privileges.
+
 ## 1.3.1 - 2026-05-14
 - Add trailing slash to bind mount source path to mark it explicitly as a directory.
 
