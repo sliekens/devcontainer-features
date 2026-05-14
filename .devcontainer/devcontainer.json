@@ -20,7 +20,7 @@
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/devcontainers/features/node:1": {},
-        "ghcr.io/sliekens/devcontainer-features/rename-user:1": {},
+        "ghcr.io/sliekens/devcontainer-features/rename-user:1.0.1": {},
         "ghcr.io/sliekens/devcontainer-features/github-cli:1": {},
         "ghcr.io/sliekens/devcontainer-features/copilot:1": {},
         "ghcr.io/sliekens/devcontainer-features/tea:1": {},

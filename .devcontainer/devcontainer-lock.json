@@ -48,10 +48,10 @@
       "resolved": "ghcr.io/sliekens/devcontainer-features/opencode@sha256:8fcb2b49b53072f228a0966f339fae73f6e0b07cbd84e3f08959cb3afaaf4bd8",
       "integrity": "sha256:8fcb2b49b53072f228a0966f339fae73f6e0b07cbd84e3f08959cb3afaaf4bd8"
     },
-    "ghcr.io/sliekens/devcontainer-features/rename-user:1": {
-      "version": "1.0.0",
-      "resolved": "ghcr.io/sliekens/devcontainer-features/rename-user@sha256:84c542ef25d0cee02b51103a7d57a6c9e12dee55440085e0441eab58143e4dd8",
-      "integrity": "sha256:84c542ef25d0cee02b51103a7d57a6c9e12dee55440085e0441eab58143e4dd8"
+    "ghcr.io/sliekens/devcontainer-features/rename-user:1.0.1": {
+      "version": "1.0.1",
+      "resolved": "ghcr.io/sliekens/devcontainer-features/rename-user@sha256:53a3c0da05184ac73cfa956b94c49a4115bd5c9c1a2ea4ecba4b43859a490b73",
+      "integrity": "sha256:53a3c0da05184ac73cfa956b94c49a4115bd5c9c1a2ea4ecba4b43859a490b73"
     },
     "ghcr.io/sliekens/devcontainer-features/tea:1": {
       "version": "1.1.0",
