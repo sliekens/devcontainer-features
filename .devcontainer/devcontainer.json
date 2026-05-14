@@ -30,7 +30,7 @@
         "ghcr.io/sliekens/devcontainer-features/tea:1": {},
         "ghcr.io/sliekens/devcontainer-features/codex:1": {},
         "ghcr.io/sliekens/devcontainer-features/claude:1": {},
-        "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1": {},
+        "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1.1.2": {},
         "ghcr.io/sliekens/devcontainer-features/opencode:1": {}
     },
     "remoteUser": "${localEnv:USER}",
