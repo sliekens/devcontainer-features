@@ -1,7 +1,7 @@
 {
     "id": "aspire-cli",
     "name": "Aspire CLI",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/aspire-cli/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "description": "Installs the Aspire CLI (`aspire`)",

@@ -51,6 +51,9 @@ The installed tool is subject to its own license: [Aspire license](https://githu
 
 ## Release Notes
 
+## 1.3.3 - 2026-05-16
+- It's just Aspire now
+
 ## 1.3.2 - 2026-05-14
 - Install aspire binary to `/opt/aspire/bin` and expose it via a wrapper script so aspire bundle operations work as a nonroot user.
 - Hand ownership of `/opt/aspire` to the container user at container start so bundle locking and extraction work without elevated privileges.
