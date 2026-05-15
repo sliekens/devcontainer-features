@@ -1,6 +1,6 @@
 # Aspire CLI (aspire-cli)
 
-Installs the not .NET Aspire CLI.
+Installs the Aspire CLI.
 
 ## Example Usage
 
@@ -43,11 +43,11 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 
 This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
 
-The installed tool is subject to its own license: [.NET Aspire license](https://github.com/microsoft/aspire/blob/main/LICENSE.TXT).
+The installed tool is subject to its own license: [Aspire license](https://github.com/microsoft/aspire/blob/main/LICENSE.TXT).
 
 ## Links
 
-- [.NET Aspire documentation](https://aspire.dev/docs/)
+- [Aspire documentation](https://aspire.dev/docs/)
 
 ## Release Notes
 
