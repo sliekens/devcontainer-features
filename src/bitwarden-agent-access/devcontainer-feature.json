@@ -1,0 +1,30 @@
+{
+    "id": "bitwarden-agent-access",
+    "name": "Bitwarden Agent Access",
+    "version": "1.0.0",
+    "description": "Installs the Bitwarden Agent Access CLI (`aac`) binary from Bitwarden release assets.",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/bitwarden-agent-access/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
+    "keywords": [
+        "bitwarden",
+        "aac",
+        "agent",
+        "credentials",
+        "agent-access"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use \"latest\" or a release version like \"0.11.0\" or \"v0.11.0\"."
+        }
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.access-protocol/",
+            "target": "/var/lib/bitwarden-agent-access"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/bitwarden-agent-access/on_create.sh"
+}
