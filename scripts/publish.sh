@@ -9,7 +9,10 @@
 # - Collection metadata publishing
 #
 # Usage:
-#   ./scripts/publish.sh
+#   ./scripts/publish.sh [--dry-run]
+#
+# Options:
+#   --dry-run    Validate schemas and print what would be published without pushing.
 #
 # Requirements:
 #   - Node.js (for @devcontainers/cli)
@@ -24,6 +27,7 @@ NAMESPACE="${NAMESPACE:-sliekens/devcontainer-features}"
 GITHUB_REPO="${GITHUB_REPO:-${NAMESPACE}}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_DIR="$(cd "$SCRIPT_DIR/../src" && pwd)"
+DRY_RUN=0
 
 # Colors for output
 RED='\033[0;31m'
@@ -38,9 +42,34 @@ log_error() { echo -e "${RED}[ERROR]${NC} $*" >&2; }
 check_requirements() {
     if ! command -v devcontainer &> /dev/null; then
         log_error "devcontainer CLI not found"
-        echo "Install with: npm install -g @devcontainers/cli"
+        echo "Install with: npm install -g @devcontainers/cli ajv-cli"
         exit 1
     fi
+}
+
+validate_features() {
+    local schema="$SCRIPT_DIR/../schemas/devContainerFeature.schema.json"
+
+    if ! command -v ajv &> /dev/null; then
+        log_info "Skipping schema validation (ajv-cli not found)"
+        return 0
+    fi
+
+    local failed=0
+    for dir in "$SRC_DIR"/*/; do
+        [[ -f "$dir/devcontainer-feature.json" ]] || continue
+        local feature_id
+        feature_id=$(basename "$dir")
+        if ajv validate --allow-union-types -s "$schema" -d "$dir/devcontainer-feature.json" &>/dev/null; then
+            log_info "Valid schema: ${feature_id}"
+        else
+            log_error "Invalid schema: ${feature_id}"
+            ajv validate --allow-union-types -s "$schema" -d "$dir/devcontainer-feature.json" 2>&1 || true
+            failed=1
+        fi
+    done
+
+    return $failed
 }
 
 # Add the org.opencontainers.image.source annotation to published packages
@@ -97,7 +126,32 @@ link_packages_to_repo() {
 }
 
 main() {
+    for arg in "$@"; do
+        case "$arg" in
+            --dry-run) DRY_RUN=1 ;;
+            *) log_error "Unknown argument: $arg"; exit 1 ;;
+        esac
+    done
+
     check_requirements
+
+    log_info "Validating feature schemas..."
+    if ! validate_features; then
+        log_error "Schema validation failed. Fix errors before publishing."
+        exit 1
+    fi
+
+    if [[ $DRY_RUN -eq 1 ]]; then
+        log_info "Dry run — would publish to ${REGISTRY}/${NAMESPACE}:"
+        for dir in "$SRC_DIR"/*/; do
+            [[ -f "$dir/devcontainer-feature.json" ]] || continue
+            local id version
+            id=$(jq -r '.id' "$dir/devcontainer-feature.json")
+            version=$(jq -r '.version' "$dir/devcontainer-feature.json")
+            log_info "  ${REGISTRY}/${NAMESPACE}/${id}:${version}"
+        done
+        return 0
+    fi
 
     log_info "Registry: ${REGISTRY}/${NAMESPACE}"
 

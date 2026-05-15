@@ -35,5 +35,5 @@
     },
     "remoteUser": "${localEnv:USER}",
     "initializeCommand": "[ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\" && mkdir -p \"$HOME/.local/share/opencode\" \"$HOME/.config/opencode\"",
-    "postCreateCommand": "npm install -g @devcontainers/cli && (command -v oras || (curl -sLO https://github.com/oras-project/oras/releases/download/v1.2.0/oras_1.2.0_linux_amd64.tar.gz && sudo tar -xzf oras_1.2.0_linux_amd64.tar.gz -C /usr/local/bin oras && rm oras_1.2.0_linux_amd64.tar.gz))"
+    "postCreateCommand": "npm install -g @devcontainers/cli ajv-cli && (command -v oras || (curl -sLO https://github.com/oras-project/oras/releases/download/v1.2.0/oras_1.2.0_linux_amd64.tar.gz && sudo tar -xzf oras_1.2.0_linux_amd64.tar.gz -C /usr/local/bin oras && rm oras_1.2.0_linux_amd64.tar.gz))"
 }
