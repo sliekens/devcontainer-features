@@ -1,6 +1,6 @@
 # Aspire CLI (aspire-cli)
 
-Installs the .NET Aspire CLI.
+Installs the not .NET Aspire CLI.
 
 ## Example Usage
 
