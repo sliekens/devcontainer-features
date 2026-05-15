@@ -30,10 +30,10 @@
       "resolved": "ghcr.io/sliekens/devcontainer-features/copilot@sha256:3a775b7e286d26783de6c3e145b50b86780395c1d1872079618fc25313925440",
       "integrity": "sha256:3a775b7e286d26783de6c3e145b50b86780395c1d1872079618fc25313925440"
     },
-    "ghcr.io/sliekens/devcontainer-features/github-cli:1": {
-      "version": "1.1.0",
-      "resolved": "ghcr.io/sliekens/devcontainer-features/github-cli@sha256:931094237f0840d43e2457e23196fc83d4ad3da6217c8f76f989c4c49f3a7bda",
-      "integrity": "sha256:931094237f0840d43e2457e23196fc83d4ad3da6217c8f76f989c4c49f3a7bda",
+    "ghcr.io/sliekens/devcontainer-features/github-cli:1.1.1": {
+      "version": "1.1.1",
+      "resolved": "ghcr.io/sliekens/devcontainer-features/github-cli@sha256:c5f849fefc4f359930693d27c756a45eb98e8de58f5dae8b8a864edc24c5a6d3",
+      "integrity": "sha256:c5f849fefc4f359930693d27c756a45eb98e8de58f5dae8b8a864edc24c5a6d3",
       "dependsOn": [
         "ghcr.io/devcontainers/features/github-cli:1"
       ]

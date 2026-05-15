@@ -25,7 +25,7 @@
             "username": "vscode"
         },
         "ghcr.io/sliekens/devcontainer-features/rename-user:1.0.1": {},
-        "ghcr.io/sliekens/devcontainer-features/github-cli:1": {},
+        "ghcr.io/sliekens/devcontainer-features/github-cli:1.1.1": {},
         "ghcr.io/sliekens/devcontainer-features/copilot:1": {},
         "ghcr.io/sliekens/devcontainer-features/tea:1": {},
         "ghcr.io/sliekens/devcontainer-features/codex:1": {},
