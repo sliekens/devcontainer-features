@@ -25,6 +25,7 @@ set -euo pipefail
 REGISTRY="${REGISTRY:-ghcr.io}"
 NAMESPACE="${NAMESPACE:-sliekens/devcontainer-features}"
 GITHUB_REPO="${GITHUB_REPO:-${NAMESPACE}}"
+PACKAGE_VISIBILITY="${PACKAGE_VISIBILITY:-public}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_DIR="$(cd "$SCRIPT_DIR/../src" && pwd)"
 DRY_RUN=0
@@ -72,56 +73,98 @@ validate_features() {
     return $failed
 }
 
-# Add the org.opencontainers.image.source annotation to published packages
-# so GHCR automatically links them to the GitHub repository.
-link_packages_to_repo() {
-    local target="$1"
+# Flags set once in post_publish_setup; read by annotate_image and check_visibility.
+CAN_ANNOTATE=0
+CAN_CHECK_VISIBILITY=0
+
+post_publish_setup() {
+    if command -v oras &>/dev/null; then
+        CAN_ANNOTATE=1
+    else
+        log_info "Skipping image annotation (oras CLI not found)"
+    fi
+
+    if ! command -v gh &>/dev/null; then
+        log_info "Skipping package visibility check (gh CLI not found)"
+    elif ! gh auth status &>/dev/null; then
+        log_info "Skipping package visibility check (gh not authenticated)"
+        echo "  Run: gh auth login"
+    else
+        CAN_CHECK_VISIBILITY=1
+    fi
+}
+
+# Add org.opencontainers.image.source to every tag of a published feature
+# so GHCR links the package to the GitHub repository.
+annotate_image() {
+    local feature_id="$1"
+    [[ $CAN_ANNOTATE -eq 1 ]] || return 0
+
+    local ref="${REGISTRY}/${NAMESPACE}/${feature_id}"
     local source_url="https://github.com/${GITHUB_REPO}"
 
-    if ! command -v oras &> /dev/null; then
-        log_info "Skipping repository linking (oras CLI not found)"
+    local tags
+    tags=$(oras repo tags "$ref" 2>/dev/null) || {
+        log_info "Could not list tags for ${feature_id}, skipping annotation"
+        return 0
+    }
+
+    local manifest
+    manifest=$(oras manifest fetch "$ref:latest" 2>/dev/null) || return 0
+
+    if echo "$manifest" | jq -e '.annotations["org.opencontainers.image.source"]' &>/dev/null; then
+        log_info "${feature_id}: already annotated"
         return 0
     fi
 
-    local features=()
-    for dir in "$target"/*/; do
-        if [[ -f "$dir/devcontainer-feature.json" ]]; then
-            features+=("$(jq -r '.id' "$dir/devcontainer-feature.json")")
-        fi
+    local updated media_type
+    updated=$(echo "$manifest" | jq --arg src "$source_url" \
+        '.annotations["org.opencontainers.image.source"] = $src')
+    media_type=$(echo "$manifest" | jq -r '.mediaType')
+
+    for tag in $tags; do
+        echo "$updated" | oras manifest push \
+            --media-type "$media_type" \
+            "$ref:$tag" - 2>/dev/null
     done
 
-    for feature_id in "${features[@]}"; do
-        local ref="${REGISTRY}/${NAMESPACE}/${feature_id}"
+    log_info "${feature_id}: annotated with source ${source_url}"
+}
 
-        # Get all tags for this feature
-        local tags
-        tags=$(oras repo tags "$ref" 2>/dev/null) || {
-            log_info "Could not list tags for ${feature_id}, skipping linking"
-            continue
-        }
+# Check that the published package has the expected visibility.
+# GitHub's REST API has no PATCH endpoint for container package visibility;
+# if the package is wrong, the user must fix it manually in the GitHub UI.
+check_visibility() {
+    local feature_id="$1"
+    [[ $CAN_CHECK_VISIBILITY -eq 1 ]] || return 0
 
-        # Check if already annotated
-        local manifest
-        manifest=$(oras manifest fetch "$ref:latest" 2>/dev/null) || continue
-        if echo "$manifest" | jq -e '.annotations["org.opencontainers.image.source"]' &>/dev/null; then
-            log_info "${feature_id} already linked to repository"
-            continue
-        fi
+    local pkg_name="${NAMESPACE#*/}/${feature_id}"
+    local encoded="${pkg_name//\//%2F}"
 
-        # Add the source annotation and push back for each tag
-        local updated
-        updated=$(echo "$manifest" | jq --arg src "$source_url" \
-            '.annotations["org.opencontainers.image.source"] = $src')
-        local media_type
-        media_type=$(echo "$manifest" | jq -r '.mediaType')
+    local api_output current_visibility html_url
+    if ! api_output=$(gh api "/user/packages/container/${encoded}" 2>&1); then
+        log_error "${feature_id}: could not read package visibility"
+        echo "$api_output" >&2
+        return 0
+    fi
 
-        for tag in $tags; do
-            echo "$updated" | oras manifest push \
-                --media-type "$media_type" \
-                "$ref:$tag" - 2>/dev/null
-        done
+    current_visibility=$(echo "$api_output" | jq -r '.visibility')
+    if [[ "$current_visibility" == "$PACKAGE_VISIBILITY" ]]; then
+        log_info "${feature_id}: visibility is ${PACKAGE_VISIBILITY}"
+    else
+        html_url=$(echo "$api_output" | jq -r '.html_url')
+        log_error "${feature_id}: visibility is ${current_visibility}, expected ${PACKAGE_VISIBILITY}"
+        echo "  Change it at: ${html_url}"
+    fi
+}
 
-        log_info "Linked ${feature_id} to ${GITHUB_REPO}"
+post_publish() {
+    for dir in "$SRC_DIR"/*/; do
+        [[ -f "$dir/devcontainer-feature.json" ]] || continue
+        local feature_id
+        feature_id=$(jq -r '.id' "$dir/devcontainer-feature.json")
+        annotate_image "$feature_id"
+        check_visibility "$feature_id"
     done
 }
 
@@ -134,6 +177,7 @@ main() {
     done
 
     check_requirements
+    post_publish_setup
 
     log_info "Validating feature schemas..."
     if ! validate_features; then
@@ -168,7 +212,7 @@ main() {
         --namespace "$NAMESPACE" \
         "${log_level_args[@]}"
 
-    link_packages_to_repo "$SRC_DIR"
+    post_publish
 
     log_success "Publish complete"
 }
