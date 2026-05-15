@@ -9,11 +9,7 @@
 # - Collection metadata publishing
 #
 # Usage:
-#   ./scripts/publish.sh [feature-id]
-#
-# Examples:
-#   ./scripts/publish.sh        # Publish all features from src/
-#   ./scripts/publish.sh codex  # Publish only the 'codex' feature
+#   ./scripts/publish.sh
 #
 # Requirements:
 #   - Node.js (for @devcontainers/cli)
@@ -58,17 +54,12 @@ link_packages_to_repo() {
         return 0
     fi
 
-    # Collect feature IDs from the publish target
     local features=()
-    if [[ -f "$target/devcontainer-feature.json" ]]; then
-        features+=("$(jq -r '.id' "$target/devcontainer-feature.json")")
-    else
-        for dir in "$target"/*/; do
-            if [[ -f "$dir/devcontainer-feature.json" ]]; then
-                features+=("$(jq -r '.id' "$dir/devcontainer-feature.json")")
-            fi
-        done
-    fi
+    for dir in "$target"/*/; do
+        if [[ -f "$dir/devcontainer-feature.json" ]]; then
+            features+=("$(jq -r '.id' "$dir/devcontainer-feature.json")")
+        fi
+    done
 
     for feature_id in "${features[@]}"; do
         local ref="${REGISTRY}/${NAMESPACE}/${feature_id}"
@@ -105,31 +96,9 @@ link_packages_to_repo() {
     done
 }
 
-resolve_target() {
-    local feature_filter="${1:-}"
-    if [[ -z "$feature_filter" ]]; then
-        printf '%s\n' "$SRC_DIR"
-        return
-    fi
-
-    local feature_dir="$SRC_DIR/$feature_filter"
-    if [[ -d "$feature_dir" && -f "$feature_dir/devcontainer-feature.json" ]]; then
-        printf '%s\n' "$feature_dir"
-        return
-    fi
-
-    log_error "Feature not found: $feature_filter"
-    exit 1
-}
-
 main() {
-    local feature_filter="${1:-}"
-    local target
-
     check_requirements
-    target="$(resolve_target "$feature_filter")"
 
-    log_info "Publishing target: $target"
     log_info "Registry: ${REGISTRY}/${NAMESPACE}"
 
     local log_level_args=()
@@ -140,12 +109,12 @@ main() {
     fi
 
     devcontainer features publish \
-        "$target" \
+        "$SRC_DIR" \
         --registry "$REGISTRY" \
         --namespace "$NAMESPACE" \
         "${log_level_args[@]}"
 
-    link_packages_to_repo "$target"
+    link_packages_to_repo "$SRC_DIR"
 
     log_success "Publish complete"
 }
