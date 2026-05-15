@@ -4,7 +4,7 @@
     "version": "1.3.2",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/aspire-cli/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
-    "description": "Installs the .NET Aspire CLI (`aspire`)",
+    "description": "Installs the Aspire CLI (`aspire`)",
     "options": {
         "quality": {
             "type": "string",
