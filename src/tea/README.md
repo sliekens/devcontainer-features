@@ -38,6 +38,17 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 }
 ```
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [Gitea CLI (tea) license](https://gitea.com/gitea/tea/src/branch/main/LICENSE).
+
+## Links
+
+- [Gitea CLI (tea)](https://gitea.com/gitea/tea)
+
 ## Release Notes
 
 ## 1.1.1 - 2026-05-14

@@ -131,7 +131,9 @@ Verify that:
 
 ## License
 
-This feature is licensed under the same terms as the Mistral Vibe CLI itself. See the [Mistral Vibe License](https://github.com/mistralai/mistral-vibe/blob/main/LICENSE) for details.
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [Mistral Vibe license](https://github.com/mistralai/mistral-vibe/blob/main/LICENSE).
 
 ## Links
 

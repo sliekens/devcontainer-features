@@ -17,6 +17,17 @@ Installs `mono-complete` from the [official Mono stable repository](https://www.
 
 This feature does not expose configurable options.
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [Mono license](https://gitlab.winehq.org/mono/mono/-/blob/main/LICENSE).
+
+## Links
+
+- [Mono documentation](https://www.mono-project.com/docs/)
+
 ## Release Notes
 
 ## 1.0.0 - 2026-03-26

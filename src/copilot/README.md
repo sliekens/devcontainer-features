@@ -38,6 +38,17 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 }
 ```
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [GitHub Copilot CLI license](https://github.com/github/copilot-cli/blob/main/LICENSE.md).
+
+## Links
+
+- [GitHub Copilot CLI documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)
+
 ## Release Notes
 
 ## 1.1.1 - 2026-05-14

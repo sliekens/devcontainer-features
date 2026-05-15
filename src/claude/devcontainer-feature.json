@@ -3,7 +3,8 @@
     "name": "Claude Code",
     "version": "1.2.3",
     "description": "Installs `claude` (Claude Code) via the upstream native installer and persists shared state across devcontainers.",
-    "documentationURL": "https://code.claude.com/docs/en/overview",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/claude/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "keywords": [
         "anthropic",
         "claude",

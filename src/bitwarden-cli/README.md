@@ -38,6 +38,17 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 }
 ```
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [Bitwarden CLI license](https://github.com/bitwarden/clients/blob/main/LICENSE.txt).
+
+## Links
+
+- [Bitwarden CLI documentation](https://bitwarden.com/help/cli/)
+
 ## Release Notes
 
 ## 1.1.1 - 2026-05-14

@@ -3,8 +3,8 @@
     "name": "Mistral Vibe",
     "version": "1.1.2",
     "description": "Installs Mistral Vibe CLI coding agent using Python virtual environment and persists shared state across devcontainers.",
-    "documentationURL": "https://mistral.ai/products/vibe",
-    "licenseURL": "https://github.com/mistralai/mistral-vibe/blob/main/LICENSE",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/mistral-vibe/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "keywords": [
         "mistral",
         "vibe",

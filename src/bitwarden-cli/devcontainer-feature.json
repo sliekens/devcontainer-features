@@ -3,8 +3,8 @@
     "name": "Bitwarden CLI",
     "version": "1.1.1",
     "description": "Installs the official Bitwarden CLI (`bw`) binary from Bitwarden release assets.",
-    "documentationURL": "https://bitwarden.com/help/cli/",
-    "licenseURL": "https://github.com/bitwarden/clients/blob/main/LICENSE.txt",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/bitwarden-cli/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "keywords": [
         "bitwarden",
         "cli",

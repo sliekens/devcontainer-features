@@ -2,7 +2,8 @@
     "id": "ansible-lint",
     "name": "Ansible Lint",
     "version": "1.0.0",
-    "documentationURL": "https://docs.ansible.com/projects/lint/",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/ansible-lint/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "description": "Installs `ansible-lint` using pipx",
     "dependsOn": {
         "ghcr.io/devcontainers/features/python:1": {}

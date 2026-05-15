@@ -2,7 +2,8 @@
     "id": "ansible",
     "name": "Ansible",
     "version": "1.0.0",
-    "documentationURL": "https://docs.ansible.com",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/ansible/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "description": "Installs `ansible` and associated CLI tools using pipx",
     "dependsOn": {
         "ghcr.io/devcontainers/features/python:1": {}

@@ -49,6 +49,17 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 }
 ```
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [opencode license](https://github.com/anomalyco/opencode/blob/dev/LICENSE).
+
+## Links
+
+- [opencode documentation](https://opencode.ai/docs/)
+
 ## Release Notes
 
 ## 1.0.1 - 2026-05-14

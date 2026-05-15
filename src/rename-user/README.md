@@ -77,3 +77,7 @@ This ensures nvm is configured for `vscode`, and rename-user then carries that s
 
 ## 1.0.0 - 2026-05-10
 - Initial release.
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).

@@ -1,23 +1,24 @@
 {
-  "id": "github-cli",
-  "name": "GitHub CLI with Persistent State",
-  "version": "1.1.1",
-  "documentationURL": "https://cli.github.com/manual",
-  "description": "Wraps the official `gh` (GitHub CLI) feature and adds persistent volume mounts for config and state",
-  "dependsOn": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
-  },
-  "mounts": [
-    {
-      "type": "bind",
-      "source": "${localEnv:HOME}/.config/gh/",
-      "target": "/var/lib/github-cli/config"
+    "id": "github-cli",
+    "name": "GitHub CLI with Persistent State",
+    "version": "1.1.1",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/github-cli/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
+    "description": "Wraps the official `gh` (GitHub CLI) feature and adds persistent volume mounts for config and state",
+    "dependsOn": {
+        "ghcr.io/devcontainers/features/github-cli:1": {}
     },
-    {
-      "type": "bind",
-      "source": "${localEnv:HOME}/.local/share/gh/",
-      "target": "/var/lib/github-cli/state"
-    }
-  ],
-  "onCreateCommand": "/usr/local/share/github-cli/on_create.sh"
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.config/gh/",
+            "target": "/var/lib/github-cli/config"
+        },
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.local/share/gh/",
+            "target": "/var/lib/github-cli/state"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/github-cli/on_create.sh"
 }

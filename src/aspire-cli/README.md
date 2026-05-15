@@ -38,6 +38,17 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 }
 ```
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [.NET Aspire license](https://github.com/microsoft/aspire/blob/main/LICENSE.TXT).
+
+## Links
+
+- [.NET Aspire documentation](https://aspire.dev/docs/)
+
 ## Release Notes
 
 ## 1.3.2 - 2026-05-14

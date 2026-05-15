@@ -27,6 +27,17 @@ If you also want linting, use the separate `ansible-lint` feature.
 
 This version supports images where the Python feature can provide `pipx`.
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [Ansible license](https://github.com/ansible/ansible/blob/devel/COPYING).
+
+## Links
+
+- [Ansible documentation](https://docs.ansible.com)
+
 ## Release Notes
 
 ## 1.0.0 - 2026-03-26

@@ -35,6 +35,17 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 }
 ```
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [GitHub CLI license](https://github.com/cli/cli/blob/trunk/LICENSE).
+
+## Links
+
+- [GitHub CLI manual](https://cli.github.com/manual)
+
 ## Release Notes
 
 ## 1.1.1 - 2026-05-14

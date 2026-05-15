@@ -2,7 +2,8 @@
     "id": "ansible-core",
     "name": "Ansible Core",
     "version": "1.0.0",
-    "documentationURL": "https://docs.ansible.com/projects/ansible-core/devel/",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/ansible-core/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "description": "Installs `ansible-core` via pipx with optional Ansible Galaxy collections and roles",
     "dependsOn": {
         "ghcr.io/devcontainers/features/python:1": {}

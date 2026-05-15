@@ -51,6 +51,17 @@ Because Docker cannot bind-mount a directory that does not yet exist, consuming 
 }
 ```
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [Codex CLI license](https://github.com/openai/codex/blob/main/LICENSE).
+
+## Links
+
+- [Codex CLI documentation](https://developers.openai.com/codex)
+
 ## Release Notes
 
 ## 1.1.1 - 2026-05-14

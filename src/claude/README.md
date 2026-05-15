@@ -62,6 +62,17 @@ Add the [`rename-user`](../rename-user/README.md) feature alongside this one. It
 
 The container home directory matches the host home directory, so all absolute paths in Claude's settings resolve correctly. Auth, settings, and history are shared between the container and any Claude CLI installed directly on the host.
 
+
+## License
+
+This feature is released under the [MIT License](https://github.com/sliekens/devcontainer-features/blob/main/LICENSE).
+
+The installed tool is subject to its own license: [Claude Code license](https://github.com/anthropics/claude-code/blob/main/LICENSE.md).
+
+## Links
+
+- [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code/overview)
+
 ## Release Notes
 
 ## 1.2.3 - 2026-05-14

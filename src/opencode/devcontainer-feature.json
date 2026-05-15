@@ -3,8 +3,8 @@
     "name": "opencode",
     "version": "1.0.1",
     "description": "Installs `opencode` from official GitHub release assets and persists shared state across devcontainers.",
-    "documentationURL": "https://opencode.ai/docs/",
-    "licenseURL": "https://github.com/anomalyco/opencode/blob/main/LICENSE",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/opencode/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "keywords": [
         "opencode",
         "ai",

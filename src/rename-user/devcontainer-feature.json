@@ -2,6 +2,8 @@
     "id": "rename-user",
     "name": "Rename Container User",
     "version": "1.0.1",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/rename-user/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "description": "Renames the default container user (`vscode`) to match the configured `remoteUser`, preserving sudo access.",
     "options": {},
     "installsAfter": [

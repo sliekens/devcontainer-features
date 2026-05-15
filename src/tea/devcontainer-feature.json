@@ -2,14 +2,15 @@
     "id": "tea",
     "name": "Gitea CLI (tea)",
     "version": "1.1.1",
-    "documentationURL": "https://gitea.com/gitea/tea",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/tea/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "description": "Installs the Gitea CLI (`tea`) from Gitea releases and enables shell completion via bash_completion.d and zsh site-functions.",
     "mounts": [
-    {
+        {
             "type": "bind",
             "source": "${localEnv:HOME}/.config/tea/",
             "target": "/var/lib/tea-cli"
-    }
+        }
     ],
     "onCreateCommand": "/usr/local/share/tea/on_create.sh",
     "options": {
