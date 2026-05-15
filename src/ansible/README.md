@@ -16,7 +16,7 @@ If you also want linting, use the separate `ansible-lint` feature.
 
 ```json
 "features": {
-    "ghcr.io/sliekens/devcontainer-features/ansible:2": {
+    "ghcr.io/sliekens/devcontainer-features/ansible:1": {
         "collections": "community.general,ansible.posix",
         "roles": "geerlingguy.docker"
     }
