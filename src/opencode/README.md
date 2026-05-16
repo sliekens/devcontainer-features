@@ -1,4 +1,4 @@
-# opencode
+# OpenCode (opencode)
 
 Installs `opencode` from official GitHub release assets and persists shared state across devcontainers.
 

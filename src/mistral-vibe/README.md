@@ -1,4 +1,4 @@
-# Mistral Vibe Dev Container Feature
+# Mistral Vibe (mistral-vibe)
 
 Installs [Mistral Vibe](https://mistral.ai/products/vibe) CLI coding agent in devcontainers using Python virtual environment and persists shared state across sessions.
 

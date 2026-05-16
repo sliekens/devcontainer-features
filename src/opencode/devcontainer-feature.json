@@ -1,7 +1,7 @@
 {
     "id": "opencode",
-    "name": "opencode",
-    "version": "1.0.1",
+    "name": "OpenCode",
+    "version": "1.0.2",
     "description": "Installs `opencode` from official GitHub release assets and persists shared state across devcontainers.",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/opencode/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",

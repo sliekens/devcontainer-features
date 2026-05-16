@@ -1,4 +1,4 @@
-# tea (tea)
+# Gitea CLI (tea)
 
 Installs the [Gitea CLI](https://gitea.com/gitea/tea) from Gitea releases and configures shell completion via `/etc/bash_completion.d/tea` (bash) and `_tea` files in standard zsh completion directories.
 

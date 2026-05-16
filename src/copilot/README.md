@@ -1,4 +1,4 @@
-# GitHub Copilot CLI (copilot-cli)
+# GitHub Copilot (copilot)
 
 Installs GitHub Copilot CLI from official release assets and persists shared `~/.copilot` state across devcontainers.
 

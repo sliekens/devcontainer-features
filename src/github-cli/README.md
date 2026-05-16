@@ -1,4 +1,4 @@
-# GitHub CLI with Persistent State (github-cli)
+# GitHub CLI (github-cli)
 
 Wraps the official GitHub CLI feature and adds persistent volume mounts for config and state.
 

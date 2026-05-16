@@ -1,4 +1,4 @@
-# Claude CLI (claude)
+# Claude Code (claude)
 
 Installs the official Anthropic Claude CLI using the upstream installer (`https://claude.ai/install.sh`) and persists shared `~/.claude` state across devcontainers.
 

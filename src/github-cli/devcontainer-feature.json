@@ -1,7 +1,7 @@
 {
     "id": "github-cli",
-    "name": "GitHub CLI with Persistent State",
-    "version": "1.1.1",
+    "name": "GitHub CLI",
+    "version": "1.1.2",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/github-cli/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "description": "Wraps the official `gh` (GitHub CLI) feature and adds persistent volume mounts for config and state",
