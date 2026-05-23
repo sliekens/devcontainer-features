@@ -1,5 +1,5 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/base:noble",
+    "image": "mcr.microsoft.com/devcontainers/base",
     "customizations": {
         "vscode": {
             "settings": {
@@ -18,20 +18,21 @@
         }
     },
     "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {
-            "username": "vscode"
+        "ghcr.io/devcontainers/features/docker-in-docker:3.0.1": {
+            "username": "vscode",
+            "moby": false
         },
         "ghcr.io/devcontainers/features/node:2.0.0": {
             "username": "vscode"
         },
         "ghcr.io/sliekens/devcontainer-features/rename-user:1.0.1": {},
-        "ghcr.io/sliekens/devcontainer-features/github-cli:1.1.1": {},
-        "ghcr.io/sliekens/devcontainer-features/copilot:1": {},
-        "ghcr.io/sliekens/devcontainer-features/tea:1": {},
-        "ghcr.io/sliekens/devcontainer-features/codex:1": {},
-        "ghcr.io/sliekens/devcontainer-features/claude:1": {},
+        "ghcr.io/sliekens/devcontainer-features/github-cli:1.1.2": {},
+        "ghcr.io/sliekens/devcontainer-features/copilot:1.1.1": {},
+        "ghcr.io/sliekens/devcontainer-features/tea:1.1.2": {},
+        // "ghcr.io/sliekens/devcontainer-features/codex:1.1.1": {},
+        "ghcr.io/sliekens/devcontainer-features/claude:1.2.3": {},
         "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1.1.2": {},
-        "ghcr.io/sliekens/devcontainer-features/opencode:1": {}
+        "ghcr.io/sliekens/devcontainer-features/opencode:1.0.2": {}
     },
     "remoteUser": "${localEnv:USER}",
     "initializeCommand": "[ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\" && mkdir -p \"$HOME/.local/share/opencode\" \"$HOME/.config/opencode\"",
