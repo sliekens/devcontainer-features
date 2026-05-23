@@ -143,8 +143,31 @@ main() {
     curl -fsSL "$download_url" -o "$archive_path"
     tar -xzf "$archive_path" -C "$tmp_dir"
 
-    install -m 0755 "${tmp_dir}/package/vendor/${VENDOR_TARGET}/codex/codex" "${INSTALL_DIR}/codex"
-    install -m 0755 "${tmp_dir}/package/vendor/${VENDOR_TARGET}/path/rg" "${INSTALL_DIR}/rg"
+    local codex_source=""
+    local rg_source=""
+
+    # Upstream archive layout changed in newer releases; support both layouts.
+    if [ -f "${tmp_dir}/package/vendor/${VENDOR_TARGET}/bin/codex" ]; then
+        codex_source="${tmp_dir}/package/vendor/${VENDOR_TARGET}/bin/codex"
+    elif [ -f "${tmp_dir}/package/vendor/${VENDOR_TARGET}/codex/codex" ]; then
+        codex_source="${tmp_dir}/package/vendor/${VENDOR_TARGET}/codex/codex"
+    fi
+
+    if [ -f "${tmp_dir}/package/vendor/${VENDOR_TARGET}/codex-path/rg" ]; then
+        rg_source="${tmp_dir}/package/vendor/${VENDOR_TARGET}/codex-path/rg"
+    elif [ -f "${tmp_dir}/package/vendor/${VENDOR_TARGET}/path/rg" ]; then
+        rg_source="${tmp_dir}/package/vendor/${VENDOR_TARGET}/path/rg"
+    fi
+
+    if [ -z "$codex_source" ] || [ -z "$rg_source" ]; then
+        echo "Unexpected Codex archive layout for ${asset_name}."
+        echo "Archive contents:"
+        tar -tzf "$archive_path"
+        exit 1
+    fi
+
+    install -m 0755 "$codex_source" "${INSTALL_DIR}/codex"
+    install -m 0755 "$rg_source" "${INSTALL_DIR}/rg"
     install -m 0755 "$SCRIPT_DIR/on_create.sh" /usr/local/share/codex/on_create.sh
 
     codex --version

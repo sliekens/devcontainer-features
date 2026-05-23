@@ -64,6 +64,9 @@ The installed tool is subject to its own license: [Codex CLI license](https://gi
 
 ## Release Notes
 
+## 1.1.2 - 2026-05-24
+- Fix compatibility with new tarball layout
+
 ## 1.1.1 - 2026-05-14
 - Add trailing slash to bind mount source path to mark it explicitly as a directory.
 

@@ -1,7 +1,7 @@
 {
     "id": "codex",
     "name": "Codex CLI",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Installs the OpenAI `codex` CLI from the official packaged release assets and persists `~/.codex` in shared state across devcontainers.",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/codex/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
