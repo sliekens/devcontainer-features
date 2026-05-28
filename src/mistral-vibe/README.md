@@ -89,22 +89,32 @@ After installation, these commands are available:
 
 ## Release Notes
 
+## 1.2.0 - 2026-05-28
+
+- Replace unofficial `nmallet.vscode-mistral-vibe` extension with official `mistralai.mistral-vibe-code`
+
 ## 1.1.2 - 2026-05-14
+
 - Fix wrapper script argument forwarding by writing wrappers with quoted heredocs and preserving `"$@"`.
 
 ## 1.1.1 - 2026-05-14
+
 - Add trailing slash to bind mount source path to mark it explicitly as a directory.
 
 ## 1.1.0 - 2026-04-11
+
 - Add `nmallet.vscode-mistral-vibe` VSCode extension to devcontainer feature.
 
 ## 1.0.2 - 2026-04-06
+
 - Fix absolute paths in `~/.vibe/config.toml` by replacing with `~`.
 
 ## 1.0.1 - 2026-04-06
+
 - Fix absolute paths in `~/.vibe` config by replacing with `~`.
 
 ## 1.0.0 - 2026-04-05
+
 - Initial release.
 
 ## Troubleshooting
