@@ -20,6 +20,11 @@
       "resolved": "ghcr.io/sliekens/devcontainer-features/claude@sha256:e29caf644384306f89f460a371165f985163143f80d8841919961d2216c52618",
       "integrity": "sha256:e29caf644384306f89f460a371165f985163143f80d8841919961d2216c52618"
     },
+    "ghcr.io/sliekens/devcontainer-features/codex:1.1.2": {
+      "version": "1.1.2",
+      "resolved": "ghcr.io/sliekens/devcontainer-features/codex@sha256:f109114053968fa79369bb20430905fa55809c90d9b91bf1b5ddcb15991920b7",
+      "integrity": "sha256:f109114053968fa79369bb20430905fa55809c90d9b91bf1b5ddcb15991920b7"
+    },
     "ghcr.io/sliekens/devcontainer-features/copilot:1.1.1": {
       "version": "1.1.1",
       "resolved": "ghcr.io/sliekens/devcontainer-features/copilot@sha256:a7675d965592940402e2d6d5088afb679798f6f479efe587324d3d6cf1d5d577",

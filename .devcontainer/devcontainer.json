@@ -29,7 +29,7 @@
         "ghcr.io/sliekens/devcontainer-features/github-cli:1.1.2": {},
         "ghcr.io/sliekens/devcontainer-features/copilot:1.1.1": {},
         "ghcr.io/sliekens/devcontainer-features/tea:1.1.2": {},
-        // "ghcr.io/sliekens/devcontainer-features/codex:1.1.1": {},
+        "ghcr.io/sliekens/devcontainer-features/codex:1.1.2": {},
         "ghcr.io/sliekens/devcontainer-features/claude:1.2.3": {},
         "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1.1.2": {},
         "ghcr.io/sliekens/devcontainer-features/opencode:1.0.2": {}
