@@ -38,10 +38,10 @@
         "ghcr.io/devcontainers/features/github-cli:1"
       ]
     },
-    "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1.1.2": {
-      "version": "1.1.2",
-      "resolved": "ghcr.io/sliekens/devcontainer-features/mistral-vibe@sha256:4d4b492e5874e35131998cbd14e673f38da5c97a760fd217bf310d08bf0c5003",
-      "integrity": "sha256:4d4b492e5874e35131998cbd14e673f38da5c97a760fd217bf310d08bf0c5003"
+    "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1.2.0": {
+      "version": "1.2.0",
+      "resolved": "ghcr.io/sliekens/devcontainer-features/mistral-vibe@sha256:17ec53c1d80db2774e10970637376c9292146d23004234db455fb282fe99f262",
+      "integrity": "sha256:17ec53c1d80db2774e10970637376c9292146d23004234db455fb282fe99f262"
     },
     "ghcr.io/sliekens/devcontainer-features/opencode:1.0.2": {
       "version": "1.0.2",
