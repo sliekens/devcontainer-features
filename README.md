@@ -33,6 +33,7 @@ Reference features in your `devcontainer.json`:
 | [`codex`](src/codex/README.md) | Installs the OpenAI `codex` CLI from the official packaged release assets and persists `~/.codex` in shared state across devcontainers. |
 | [`copilot`](src/copilot/README.md) | Installs the GitHub `copilot` CLI from official release assets and persists shared `~/.copilot` state across devcontainers. |
 | [`github-cli`](src/github-cli/README.md) | Wraps the official `gh` (GitHub CLI) feature and adds persistent volume mounts for config and state |
+| [`grok-build`](src/grok-build/README.md) | Installs the xAI `grok` CLI (Grok Build) via the upstream installer and persists shared `~/.grok` state across devcontainers. |
 | [`mistral-vibe`](src/mistral-vibe/README.md) | Installs Mistral Vibe CLI coding agent using Python virtual environment and persists shared state across devcontainers. |
 | [`mono`](src/mono/README.md) | Installs `mono-complete` from the official Mono stable repository |
 | [`opencode`](src/opencode/README.md) | Installs `opencode` from official GitHub release assets and persists shared state across devcontainers. |

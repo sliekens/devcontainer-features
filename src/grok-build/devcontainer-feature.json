@@ -1,0 +1,45 @@
+{
+    "id": "grok-build",
+    "name": "Grok Build",
+    "version": "1.0.0",
+    "description": "Installs the xAI `grok` CLI (Grok Build) via the upstream installer and persists shared `~/.grok` state across devcontainers.",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/grok-build/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
+    "keywords": [
+        "grok",
+        "grok-build",
+        "xai",
+        "ai",
+        "cli",
+        "coding",
+        "agent"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use `latest` for the current channel release, or specify a version like `0.2.51`."
+        },
+        "channel": {
+            "type": "string",
+            "default": "stable",
+            "enum": [
+                "stable",
+                "alpha",
+                "enterprise"
+            ],
+            "description": "Release channel to install from when `version` is `latest`."
+        }
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.grok/",
+            "target": "/var/lib/grok-build"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/grok-build/on_create.sh",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
