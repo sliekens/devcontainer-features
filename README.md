@@ -25,7 +25,7 @@ Reference features in your `devcontainer.json`:
 | [`ansible`](src/ansible/README.md) | Installs `ansible` and associated CLI tools using pipx |
 | [`ansible-core`](src/ansible-core/README.md) | Installs `ansible-core` via pipx with optional Ansible Galaxy collections and roles |
 | [`ansible-lint`](src/ansible-lint/README.md) | Installs `ansible-lint` using pipx |
-| [`aspire-cli`](src/aspire-cli/README.md) | Installs the .NET Aspire CLI (`aspire`) |
+| [`aspire-cli`](src/aspire-cli/README.md) | Installs the Aspire CLI (`aspire`) |
 | [`bitwarden-agent-access`](src/bitwarden-agent-access/README.md) | Installs the Bitwarden Agent Access CLI (`aac`) binary from Bitwarden release assets. |
 | [`bitwarden-cli`](src/bitwarden-cli/README.md) | Installs the official Bitwarden CLI (`bw`) binary from Bitwarden release assets. |
 | [`bitwarden-secrets-manager`](src/bitwarden-secrets-manager/README.md) | Installs the Bitwarden Secrets Manager CLI (`bws`) binary from Bitwarden release assets. |
