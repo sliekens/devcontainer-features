@@ -74,5 +74,8 @@ The installed tool is subject to xAI's terms of service.
 
 ## Release Notes
 
+## 1.0.1 - 2026-07-05
+- Install after `rename-user` when present, so `chown` in `install.sh` resolves the container username correctly.
+
 ## 1.0.0 - 2026-06-15
 - Initial release.
