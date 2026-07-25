@@ -1,0 +1,18 @@
+{
+    "pinned_version_no_completions": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainers/features/common-utils:1": {
+                "installZsh": false,
+                "installOhMyZsh": false,
+                "upgradePackages": false,
+                "username": "octocat"
+            },
+            "worktrunk": {
+                "version": "0.69.2",
+                "tabCompletions": false
+            }
+        },
+        "remoteUser": "octocat"
+    }
+}

@@ -39,6 +39,7 @@ Reference features in your `devcontainer.json`:
 | [`opencode`](src/opencode/README.md) | Installs `opencode` from official GitHub release assets and persists shared state across devcontainers. |
 | [`rename-user`](src/rename-user/README.md) | Renames the default container user (`vscode`) to match the configured `remoteUser`, preserving sudo access. |
 | [`tea`](src/tea/README.md) | Installs the Gitea CLI (`tea`) from Gitea releases and enables shell completion via bash_completion.d and zsh site-functions. |
+| [`worktrunk`](src/worktrunk/README.md) | Installs the Worktrunk CLI (`wt` and `git-wt`) from official GitHub release assets and persists `~/.config/worktrunk` across devcontainers. |
 <!-- END FEATURES TABLE -->
 
 ## Registry

@@ -1,0 +1,41 @@
+{
+    "id": "worktrunk",
+    "name": "Worktrunk",
+    "version": "1.0.0",
+    "description": "Installs the Worktrunk CLI (`wt` and `git-wt`) from official GitHub release assets and persists `~/.config/worktrunk` across devcontainers.",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/worktrunk/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
+    "keywords": [
+        "worktrunk",
+        "wt",
+        "git",
+        "worktree",
+        "cli",
+        "agent"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use \"latest\" for the most recent release, or specify a version like \"0.69.2\" or \"v0.69.2\"."
+        },
+        "tabCompletions": {
+            "type": "boolean",
+            "default": true,
+            "description": "Install Worktrunk shell integration (tab completions and the `wt` directory-switching wrapper) for bash, zsh, and fish."
+        }
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.config/worktrunk/",
+            "target": "/var/lib/worktrunk-config"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/worktrunk/on_create.sh",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/git",
+        "ghcr.io/sliekens/devcontainer-features/rename-user"
+    ]
+}
