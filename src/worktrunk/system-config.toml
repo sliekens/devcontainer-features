@@ -1,0 +1,10 @@
+# Managed by the worktrunk devcontainer feature.
+# Do not put personal preferences here — use ~/.config/worktrunk/config.toml instead.
+#
+# Nested under the repository so new worktrees land on the workspace bind mount
+# (or named volume). Worktrunk's upstream default places worktrees as siblings
+# of the repo (e.g. /workspace.<branch>), which is not creatable by the usual
+# unprivileged remoteUser when the workspace is mounted at /workspace.
+#
+# Override worktree-path in user config if you need a different layout.
+worktree-path = "{{ repo_path }}/.worktrees/{{ branch | sanitize }}"

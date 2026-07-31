@@ -6,6 +6,8 @@ REPO_NAME="worktrunk"
 INSTALL_DIR="/usr/local/bin"
 CONFIG_DIR="/var/lib/worktrunk-config"
 SHARE_DIR="/usr/local/share/worktrunk"
+# Worktrunk reads optional system config from XDG_CONFIG_DIRS (default: /etc/xdg).
+SYSTEM_CONFIG_DIR="/etc/xdg/worktrunk"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 TAB_COMPLETIONS="${TABCOMPLETIONS:-true}"
@@ -136,6 +138,14 @@ verify_checksum() {
     fi
 }
 
+# Container-safe default for worktree-path. Lives in system config so it does
+# not touch the host-shared user config or per-repo project config; either can
+# still override.
+install_system_config() {
+    install -d -m 0755 "$SYSTEM_CONFIG_DIR"
+    install -m 0644 "$SCRIPT_DIR/system-config.toml" "${SYSTEM_CONFIG_DIR}/config.toml"
+}
+
 # Append a snippet to an rc file once, keyed by a marker comment.
 append_once() {
     local rc_file="$1"
@@ -245,6 +255,8 @@ main() {
     if [ "$TAB_COMPLETIONS" = "true" ]; then
         install_shell_integration
     fi
+
+    install_system_config
 
     install -m 0755 "$SCRIPT_DIR/on_create.sh" "${SHARE_DIR}/on_create.sh"
 
