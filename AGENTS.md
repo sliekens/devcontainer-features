@@ -20,7 +20,8 @@ This repository contains [dev container features](https://containers.dev/impleme
 | `test/<feature>/test.sh`                  | Feature tests                           |
 | `scripts/publish.sh`                      | Publish features to registry            |
 | `scripts/test.sh`                         | Run feature tests locally               |
-| `scripts/test-pull.sh`                    | Test pulling from registry              |
+| `scripts/sync-readme.sh`                  | Regenerate root README features table   |
+| `.agents/skills/release/`                 | Full Feature release workflow for agents |
 
 ## Common Tasks
 
@@ -50,15 +51,17 @@ This repository contains [dev container features](https://containers.dev/impleme
 
 ## Versioning
 
-Features use semantic versioning. To release a new version:
+Features use semantic versioning. To release a new version (see also the `release` skill):
 
 1. Bump `version` in `devcontainer-feature.json`
 2. Update the "Release Notes" section in `src/<feature-id>/README.md` with a new entry for that version
-3. Run `./scripts/publish.sh <feature-id>`
+3. Run `./scripts/sync-readme.sh` (refreshes the root README features table from each feature `description`)
+4. Run `./scripts/test.sh <feature-id>`
+5. Run `./scripts/publish.sh` (publishes all features; already-published versions are skipped)
 
 Release notes updates are required for any feature change that affects behavior, options, dependencies, install flow, or docs tied to usage.
 
-The publish script is idempotent - it skips already-published versions.
+The publish script is idempotent - it skips already-published versions. Do not hand-edit the root features table; always use `sync-readme.sh`.
 
 ## Dependencies
 
