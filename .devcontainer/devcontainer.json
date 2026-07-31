@@ -18,11 +18,11 @@
         }
     },
     "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:3.0.1": {
+        "ghcr.io/devcontainers/features/docker-in-docker:4.0.0": {
             "username": "vscode",
             "moby": false
         },
-        "ghcr.io/devcontainers/features/node:2.0.0": {
+        "ghcr.io/devcontainers/features/node:2.1.0": {
             "username": "vscode"
         },
         "ghcr.io/sliekens/devcontainer-features/rename-user:1.0.1": {},
@@ -32,9 +32,10 @@
         "ghcr.io/sliekens/devcontainer-features/codex:1.1.2": {},
         "ghcr.io/sliekens/devcontainer-features/claude:1.2.3": {},
         "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1.2.0": {},
-        "ghcr.io/sliekens/devcontainer-features/opencode:1.0.2": {}
+        "ghcr.io/sliekens/devcontainer-features/opencode:1.0.2": {},
+        "ghcr.io/sliekens/devcontainer-features/worktrunk:1.1.0": {}
     },
     "remoteUser": "${localEnv:USER}",
-    "initializeCommand": "[ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\" && mkdir -p \"$HOME/.local/share/opencode\" \"$HOME/.config/opencode\"",
+    "initializeCommand": "[ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\" && mkdir -p \"$HOME/.local/share/opencode\" \"$HOME/.config/opencode\" && mkdir -p \"$HOME/.config/worktrunk\"",
     "postCreateCommand": "npm install -g @devcontainers/cli ajv-cli && (command -v oras || (curl -sLO https://github.com/oras-project/oras/releases/download/v1.2.0/oras_1.2.0_linux_amd64.tar.gz && sudo tar -xzf oras_1.2.0_linux_amd64.tar.gz -C /usr/local/bin oras && rm oras_1.2.0_linux_amd64.tar.gz))"
 }
