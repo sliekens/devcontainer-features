@@ -1,7 +1,7 @@
 {
     "id": "github-cli",
     "name": "GitHub CLI",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/github-cli/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "description": "Wraps the official `gh` (GitHub CLI) feature and adds persistent volume mounts for config and state",
@@ -20,5 +20,10 @@
             "target": "/var/lib/github-cli/state"
         }
     ],
-    "onCreateCommand": "/usr/local/share/github-cli/on_create.sh"
+    "onCreateCommand": "/usr/local/share/github-cli/on_create.sh",
+    "customizations": {
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.config/gh\" \"$HOME/.local/share/gh\""
+        }
+    }
 }

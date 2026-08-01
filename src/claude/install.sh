@@ -90,10 +90,16 @@ main() {
     ensure_basics
     # CONTAINER_DIR is owned by the remote user so Claude can create
     # its lock directory (STATE_DIR.lock) adjacent to STATE_DIR.
+    # Prefer _REMOTE_USER when that account already exists (e.g. after
+    # rename-user). Fall back to root if remoteUser is not created yet.
+    local owner="${_REMOTE_USER:-root}"
+    if ! id "$owner" >/dev/null 2>&1; then
+        owner="root"
+    fi
     install -d -m 0755 "$CONTAINER_DIR"
-    chown "${_REMOTE_USER:-root}:${_REMOTE_USER:-root}" "$CONTAINER_DIR"
+    chown "${owner}:${owner}" "$CONTAINER_DIR"
     install -d -m 0700 "$STATE_DIR"
-    chown "${_REMOTE_USER:-root}:${_REMOTE_USER:-root}" "$STATE_DIR"
+    chown "${owner}:${owner}" "$STATE_DIR"
     install -d -m 0755 /usr/local/share/claude
 
     run_claude_install "$version"

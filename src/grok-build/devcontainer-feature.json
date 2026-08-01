@@ -1,7 +1,7 @@
 {
     "id": "grok-build",
     "name": "Grok Build",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Installs the xAI `grok` CLI (Grok Build) via the upstream installer and persists shared `~/.grok` state across devcontainers.",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/grok-build/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
@@ -42,5 +42,10 @@
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils",
         "ghcr.io/sliekens/devcontainer-features/rename-user"
-    ]
+    ],
+    "customizations": {
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.grok\""
+        }
+    }
 }

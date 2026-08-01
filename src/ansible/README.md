@@ -23,6 +23,12 @@ If you also want linting, use the separate `ansible-lint` feature.
 }
 ```
 
+## AI assisted installation
+
+Copy the block below into a chat with your coding agent:
+
+> Add `ghcr.io/sliekens/devcontainer-features/ansible:1` to this project's Dev Container. Follow https://github.com/sliekens/devcontainer-features/blob/main/src/ansible/README.md. Use the collection's shared `initializeCommand` pipeline (devcontainer + jq + xargs over `customizations.sliekens[].initializeCommand`) for host bind pre-create; Unix/WSL2 only. Prefer that over hand-written `mkdir` unless asked.
+
 ## Compatibility
 
 This version supports images where the Python feature can provide `pipx`.

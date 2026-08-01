@@ -19,6 +19,12 @@ This feature depends on `ghcr.io/devcontainers/features/python:1` to provide Pyt
 }
 ```
 
+## AI assisted installation
+
+Copy the block below into a chat with your coding agent:
+
+> Add `ghcr.io/sliekens/devcontainer-features/ansible-core:1` to this project's Dev Container. Follow https://github.com/sliekens/devcontainer-features/blob/main/src/ansible-core/README.md. Use the collection's shared `initializeCommand` pipeline (devcontainer + jq + xargs over `customizations.sliekens[].initializeCommand`) for host bind pre-create; Unix/WSL2 only. Prefer that over hand-written `mkdir` unless asked.
+
 ## Compatibility
 
 This version supports images where the Python feature can provide `pipx`.

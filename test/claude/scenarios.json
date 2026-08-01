@@ -8,6 +8,10 @@
         "version": "stable"
       }
     },
+    "overrideFeatureInstallOrder": [
+      "./rename-user",
+      "./claude"
+    ],
     "initializeCommand": "mkdir -p \"$HOME/.claude\" && { [ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\"; }"
   }
 }

@@ -17,6 +17,22 @@ Reference features in your `devcontainer.json`:
 }
 ```
 
+### Host path pre-create (bind mounts)
+
+Several features bind-mount host paths (CLI auth and config) so state is shared with tools on the host. Docker cannot mount those sources until they exist.
+
+Features that need this declare a host init command under `customizations.sliekens.initializeCommand`. Add **one** `initializeCommand` to your `devcontainer.json` — it runs every feature’s command and composes when you enable more than one:
+
+```json
+"initializeCommand": "devcontainer read-configuration --workspace-folder . --include-merged-configuration | jq -r '(.mergedConfiguration.customizations.sliekens // []) | .[] | .initializeCommand' | xargs -I{} bash -c {}"
+```
+
+Requires `devcontainer` and `jq` on the host `PATH`.
+
+> **Note:** This pipeline runs only on Unix-like systems (Linux, macOS, and source code inside WSL2 on Windows). Native Windows (`cmd.exe`) is not supported — the Dev Containers CLI runs `initializeCommand` via `/bin/sh -c` on Unix and `cmd.exe /c` on native Windows.
+
+As an alternative to automating with the Dev Containers CLI, `jq`, and `xargs`, you can pre-create the host paths yourself (see each feature’s README for the exact `mkdir` / `touch` recipe).
+
 ## Available Features
 
 <!-- BEGIN FEATURES TABLE -->

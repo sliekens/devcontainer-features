@@ -13,6 +13,12 @@ Installs `mono-complete` from the [official Mono stable repository](https://www.
 }
 ```
 
+## AI assisted installation
+
+Copy the block below into a chat with your coding agent:
+
+> Add `ghcr.io/sliekens/devcontainer-features/mono:1` to this project's Dev Container. Follow https://github.com/sliekens/devcontainer-features/blob/main/src/mono/README.md. Use the collection's shared `initializeCommand` pipeline (devcontainer + jq + xargs over `customizations.sliekens[].initializeCommand`) for host bind pre-create; Unix/WSL2 only. Prefer that over hand-written `mkdir` unless asked.
+
 ## Options
 
 This feature does not expose configurable options.

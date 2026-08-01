@@ -18,6 +18,12 @@ Set `remoteUser` to `${localEnv:USER}` and add this feature. No Dockerfile custo
 }
 ```
 
+## AI assisted installation
+
+Copy the block below into a chat with your coding agent:
+
+> Add `ghcr.io/sliekens/devcontainer-features/rename-user:1` to this project's Dev Container. Follow https://github.com/sliekens/devcontainer-features/blob/main/src/rename-user/README.md. Use the collection's shared `initializeCommand` pipeline (devcontainer + jq + xargs over `customizations.sliekens[].initializeCommand`) for host bind pre-create; Unix/WSL2 only. Prefer that over hand-written `mkdir` unless asked.
+
 ## Behavior
 
 - Reads the target username from `_REMOTE_USER`, which the devcontainer CLI sets from the `remoteUser` property.

@@ -1,7 +1,7 @@
 {
     "id": "tea",
     "name": "Gitea CLI",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/tea/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
     "description": "Installs the Gitea CLI (`tea`) from Gitea releases and enables shell completion via bash_completion.d and zsh site-functions.",
@@ -22,5 +22,10 @@
     },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils"
-    ]
+    ],
+    "customizations": {
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.config/tea\""
+        }
+    }
 }

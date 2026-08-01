@@ -1,7 +1,7 @@
 {
     "id": "worktrunk",
     "name": "Worktrunk",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Installs the Worktrunk CLI (`wt` and `git-wt`) from official GitHub release assets, sets a container-safe system worktree-path default, and persists `~/.config/worktrunk` across devcontainers.",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/worktrunk/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
@@ -37,5 +37,10 @@
         "ghcr.io/devcontainers/features/common-utils",
         "ghcr.io/devcontainers/features/git",
         "ghcr.io/sliekens/devcontainer-features/rename-user"
-    ]
+    ],
+    "customizations": {
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.config/worktrunk\""
+        }
+    }
 }

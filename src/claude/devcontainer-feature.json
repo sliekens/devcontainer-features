@@ -1,7 +1,7 @@
 {
     "id": "claude",
     "name": "Claude Code",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "Installs `claude` (Claude Code) via the upstream native installer and persists shared state across devcontainers.",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/claude/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
@@ -36,6 +36,9 @@
             "extensions": [
                 "Anthropic.claude-code"
             ]
+        },
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.claude\" && { [ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\"; }"
         }
     },
     "installsAfter": [

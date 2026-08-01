@@ -1,7 +1,7 @@
 {
     "id": "bitwarden-secrets-manager",
     "name": "Bitwarden Secrets Manager CLI",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Installs the Bitwarden Secrets Manager CLI (`bws`) binary from Bitwarden release assets.",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/bitwarden-secrets-manager/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
@@ -26,5 +26,10 @@
             "target": "/var/lib/bitwarden-secrets-manager"
         }
     ],
-    "onCreateCommand": "/usr/local/share/bitwarden-secrets-manager/on_create.sh"
+    "onCreateCommand": "/usr/local/share/bitwarden-secrets-manager/on_create.sh",
+    "customizations": {
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.config/bws\""
+        }
+    }
 }

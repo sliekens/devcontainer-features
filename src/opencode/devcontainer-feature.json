@@ -1,7 +1,7 @@
 {
     "id": "opencode",
     "name": "OpenCode",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Installs `opencode` from official GitHub release assets and persists shared state across devcontainers.",
     "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/opencode/README.md",
     "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
@@ -35,6 +35,9 @@
             "extensions": [
                 "sst-dev.opencode"
             ]
+        },
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.local/share/opencode\" \"$HOME/.config/opencode\""
         }
     },
     "installsAfter": [
