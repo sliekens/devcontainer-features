@@ -26,16 +26,16 @@
             "username": "vscode"
         },
         "ghcr.io/sliekens/devcontainer-features/rename-user:1.0.1": {},
-        "ghcr.io/sliekens/devcontainer-features/github-cli:1.1.2": {},
-        "ghcr.io/sliekens/devcontainer-features/copilot:1.1.1": {},
-        "ghcr.io/sliekens/devcontainer-features/tea:1.1.2": {},
-        "ghcr.io/sliekens/devcontainer-features/codex:1.1.2": {},
-        "ghcr.io/sliekens/devcontainer-features/claude:1.2.3": {},
-        "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1.2.0": {},
-        "ghcr.io/sliekens/devcontainer-features/opencode:1.0.2": {},
-        "ghcr.io/sliekens/devcontainer-features/worktrunk:1.1.0": {}
+        "ghcr.io/sliekens/devcontainer-features/github-cli:1.1.3": {},
+        "ghcr.io/sliekens/devcontainer-features/copilot:1.1.2": {},
+        "ghcr.io/sliekens/devcontainer-features/tea:1.1.3": {},
+        "ghcr.io/sliekens/devcontainer-features/codex:1.1.3": {},
+        "ghcr.io/sliekens/devcontainer-features/claude:1.2.4": {},
+        "ghcr.io/sliekens/devcontainer-features/mistral-vibe:1.2.1": {},
+        "ghcr.io/sliekens/devcontainer-features/opencode:1.0.3": {},
+        "ghcr.io/sliekens/devcontainer-features/worktrunk:1.1.1": {}
     },
     "remoteUser": "${localEnv:USER}",
-    "initializeCommand": "[ -f \"$HOME/.claude.json\" ] || touch \"$HOME/.claude.json\" && mkdir -p \"$HOME/.local/share/opencode\" \"$HOME/.config/opencode\" && mkdir -p \"$HOME/.config/worktrunk\"",
+    "initializeCommand": "devcontainer read-configuration --workspace-folder . --include-merged-configuration | jq -r '(.mergedConfiguration.customizations.sliekens // []) | .[] | .initializeCommand' | xargs -I{} bash -c {}",
     "postCreateCommand": "npm install -g @devcontainers/cli ajv-cli && (command -v oras || (curl -sLO https://github.com/oras-project/oras/releases/download/v1.2.0/oras_1.2.0_linux_amd64.tar.gz && sudo tar -xzf oras_1.2.0_linux_amd64.tar.gz -C /usr/local/bin oras && rm oras_1.2.0_linux_amd64.tar.gz))"
 }
