@@ -1,0 +1,42 @@
+{
+    "id": "pi",
+    "name": "Pi",
+    "version": "1.0.0",
+    "description": "Installs the Pi coding agent CLI (`pi`) via a noninteractive npm install and persists shared `~/.pi` state across devcontainers. Requires Node.js 22.19+ with npm as a peer dependency.",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/pi/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
+    "keywords": [
+        "pi",
+        "pi.dev",
+        "ai",
+        "cli",
+        "coding",
+        "agent",
+        "npm"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use `latest` for the current npm release, or specify a version like `0.83.0` or `v0.83.0`."
+        }
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.pi/",
+            "target": "/var/lib/pi"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/pi/on_create.sh",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/node",
+        "ghcr.io/sliekens/devcontainer-features/rename-user"
+    ],
+    "customizations": {
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.pi\""
+        }
+    }
+}

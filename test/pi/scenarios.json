@@ -1,0 +1,34 @@
+{
+    "with_node_feature": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainers/features/node:2": {
+                "version": "22.19.0",
+                "nodeGypDependencies": false
+            },
+            "pi": {}
+        }
+    },
+    "with_node_lts_feature": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainers/features/node:2": {
+                "version": "lts",
+                "nodeGypDependencies": false
+            },
+            "pi": {}
+        }
+    },
+    "pinned_version_with_node": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainers/features/node:2": {
+                "version": "22.19.0",
+                "nodeGypDependencies": false
+            },
+            "pi": {
+                "version": "0.83.0"
+            }
+        }
+    }
+}
