@@ -77,6 +77,12 @@ validate_features() {
 CAN_ANNOTATE=0
 CAN_CHECK_VISIBILITY=0
 
+# Source features always declare installsAfter against ghcr.io. When publishing to
+# another registry, rewrite collection-local refs for that run only (temp copy).
+CANONICAL_REGISTRY="ghcr.io"
+PUBLISH_SRC_DIR=""
+PUBLISH_TMP_DIR=""
+
 post_publish_setup() {
     if command -v oras &>/dev/null; then
         CAN_ANNOTATE=1
@@ -92,6 +98,79 @@ post_publish_setup() {
     else
         CAN_CHECK_VISIBILITY=1
     fi
+}
+
+cleanup_publish_tmp() {
+    if [[ -n "${PUBLISH_TMP_DIR:-}" && -d "$PUBLISH_TMP_DIR" ]]; then
+        rm -rf "$PUBLISH_TMP_DIR"
+        PUBLISH_TMP_DIR=""
+    fi
+}
+
+# Rewrite installsAfter entries that point at this collection on the canonical
+# registry so they resolve against the publish target instead.
+# Only mutates files under the given directory (expected to be a temp copy).
+rewrite_installs_after() {
+    local dir="$1"
+    local from_prefix="${CANONICAL_REGISTRY}/${NAMESPACE}"
+    local to_prefix="${REGISTRY}/${NAMESPACE}"
+    local rewritten=0
+
+    if ! command -v jq &>/dev/null; then
+        log_error "jq is required to rewrite installsAfter for non-ghcr registries"
+        exit 1
+    fi
+
+    log_info "Rewriting collection installsAfter: ${from_prefix}/… → ${to_prefix}/…"
+
+    local feature_json feature_id
+    for feature_json in "$dir"/*/devcontainer-feature.json; do
+        [[ -f "$feature_json" ]] || continue
+        if ! jq -e --arg from "$from_prefix" '
+            (.installsAfter // [])
+            | map(startswith($from + "/") or . == $from)
+            | any
+        ' "$feature_json" &>/dev/null; then
+            continue
+        fi
+
+        feature_id=$(basename "$(dirname "$feature_json")")
+        jq --arg from "$from_prefix" --arg to "$to_prefix" '
+            if .installsAfter then
+                .installsAfter |= map(
+                    if startswith($from + "/") or . == $from then
+                        $to + .[($from | length):]
+                    else
+                        .
+                    end
+                )
+            else
+                .
+            end
+        ' "$feature_json" > "${feature_json}.tmp"
+        mv "${feature_json}.tmp" "$feature_json"
+        log_info "  ${feature_id}: installsAfter rewritten for ${REGISTRY}"
+        rewritten=1
+    done
+
+    if [[ $rewritten -eq 0 ]]; then
+        log_info "  (no collection-local installsAfter refs to rewrite)"
+    fi
+}
+
+# Prepare the feature tree used for packaging. Source stays untouched when
+# REGISTRY differs from ghcr.io: publish from a rewritten temp copy instead.
+prepare_publish_src() {
+    if [[ "$REGISTRY" == "$CANONICAL_REGISTRY" ]]; then
+        PUBLISH_SRC_DIR="$SRC_DIR"
+        return 0
+    fi
+
+    PUBLISH_TMP_DIR=$(mktemp -d)
+    trap cleanup_publish_tmp EXIT
+    cp -a "$SRC_DIR"/. "$PUBLISH_TMP_DIR"/
+    rewrite_installs_after "$PUBLISH_TMP_DIR"
+    PUBLISH_SRC_DIR="$PUBLISH_TMP_DIR"
 }
 
 # Add org.opencontainers.image.source to every tag of a published feature
@@ -185,14 +264,24 @@ main() {
         exit 1
     fi
 
+    prepare_publish_src
+
     if [[ $DRY_RUN -eq 1 ]]; then
         log_info "Dry run — would publish to ${REGISTRY}/${NAMESPACE}:"
-        for dir in "$SRC_DIR"/*/; do
+        for dir in "$PUBLISH_SRC_DIR"/*/; do
             [[ -f "$dir/devcontainer-feature.json" ]] || continue
-            local id version
+            local id version rewritten
             id=$(jq -r '.id' "$dir/devcontainer-feature.json")
             version=$(jq -r '.version' "$dir/devcontainer-feature.json")
             log_info "  ${REGISTRY}/${NAMESPACE}/${id}:${version}"
+            if [[ "$REGISTRY" != "$CANONICAL_REGISTRY" ]]; then
+                rewritten=$(jq -c --arg prefix "${REGISTRY}/${NAMESPACE}/" \
+                    '[.installsAfter // [] | .[] | select(startswith($prefix))]' \
+                    "$dir/devcontainer-feature.json")
+                if [[ "$rewritten" != "[]" ]]; then
+                    log_info "    installsAfter (rewritten): ${rewritten}"
+                fi
+            fi
         done
         return 0
     fi
@@ -207,7 +296,7 @@ main() {
     fi
 
     devcontainer features publish \
-        "$SRC_DIR" \
+        "$PUBLISH_SRC_DIR" \
         --registry "$REGISTRY" \
         --namespace "$NAMESPACE" \
         "${log_level_args[@]}"

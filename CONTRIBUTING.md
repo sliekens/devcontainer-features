@@ -56,20 +56,18 @@ This file defines the feature metadata. Required fields: `id`, `name`, `version`
 
 ```json
 {
-    "id": "my-feature",
-    "name": "My Feature",
-    "version": "1.0.0",
-    "description": "A brief description of what this feature does",
-    "options": {
-        "version": {
-            "type": "string",
-            "default": "latest",
-            "description": "Version to install"
-        }
-    },
-    "installsAfter": [
-        "ghcr.io/devcontainers/features/common-utils"
-    ]
+  "id": "my-feature",
+  "name": "My Feature",
+  "version": "1.0.0",
+  "description": "A brief description of what this feature does",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version to install"
+    }
+  },
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils"]
 }
 ```
 
@@ -126,14 +124,14 @@ For additional test scenarios, create `test/<feature-id>/scenarios.json`:
 
 ```json
 {
-    "custom-scenario": {
-        "image": "ubuntu:22.04",
-        "features": {
-            "my-feature": {
-                "version": "2.0"
-            }
-        }
+  "custom-scenario": {
+    "image": "ubuntu:22.04",
+    "features": {
+      "my-feature": {
+        "version": "2.0"
+      }
     }
+  }
 }
 ```
 
@@ -192,15 +190,26 @@ Override the default registry:
 REGISTRY=my-registry.example.com NAMESPACE=my-namespace ./scripts/publish.sh
 ```
 
+Source features keep `installsAfter` pinned to `ghcr.io/<namespace>/…`. When `REGISTRY` is not `ghcr.io`, the publish script rewrites collection-local refs to `${REGISTRY}/${NAMESPACE}/…` for that run only (temp copy; source files are not modified). Third-party refs such as `ghcr.io/devcontainers/features/…` are left unchanged.
+
+Example:
+
+```bash
+REGISTRY=registry.local:5000 ./scripts/publish.sh --dry-run
+# ghcr.io/sliekens/devcontainer-features/rename-user
+#   → registry.local:5000/sliekens/devcontainer-features/rename-user
+```
+
 ### What Happens During Publishing
 
-1. **Package**: Each feature is packaged into a `.tgz` archive
-2. **Push**: The archive is pushed to the registry with version tags:
+1. **Rewrite** (non-ghcr only): Collection-local `installsAfter` refs are adjusted for the target registry in a temporary copy of `src/`
+2. **Package**: Each feature is packaged into a `.tgz` archive
+3. **Push**: The archive is pushed to the registry with version tags:
    - `<major>` (e.g., `:1`)
    - `<major>.<minor>` (e.g., `:1.0`)
    - `<major>.<minor>.<patch>` (e.g., `:1.0.0`)
    - `:latest`
-3. **Collection Metadata**: A `devcontainer-collection.json` is generated and pushed
+4. **Collection Metadata**: A `devcontainer-collection.json` is generated and pushed
 
 ### Idempotency
 
@@ -260,6 +269,7 @@ export ORAS_PASSWORD=mypassword
 ### "devcontainer: command not found"
 
 Install the CLI:
+
 ```bash
 npm install -g @devcontainers/cli
 ```
@@ -271,6 +281,7 @@ Install oras from https://oras.land/docs/installation
 ### Tests fail with Docker permission errors
 
 Ensure your user is in the docker group or use sudo:
+
 ```bash
 sudo usermod -aG docker $USER
 # Log out and back in
