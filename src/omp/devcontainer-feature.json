@@ -1,0 +1,44 @@
+{
+    "id": "omp",
+    "name": "Oh My Pi",
+    "version": "1.0.0",
+    "description": "Installs the Oh My Pi coding agent CLI (`omp`) from official prebuilt release assets (noninteractive, derived from https://omp.sh/install) and persists shared `~/.omp` state across devcontainers. Requires Bun 1.3.14+ or Node.js as a peer dependency for the full harness.",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/omp/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
+    "keywords": [
+        "omp",
+        "oh-my-pi",
+        "oh my pi",
+        "pi",
+        "ai",
+        "cli",
+        "coding",
+        "agent",
+        "bun"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use `latest` for the current release, or specify a version like `17.2.9` or `v17.2.9`."
+        }
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.omp/",
+            "target": "/var/lib/omp"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/omp/on_create.sh",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/node",
+        "ghcr.io/sliekens/devcontainer-features/rename-user"
+    ],
+    "customizations": {
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.omp\""
+        }
+    }
+}

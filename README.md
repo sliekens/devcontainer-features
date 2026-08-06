@@ -52,6 +52,7 @@ As an alternative to automating with the Dev Containers CLI, `jq`, and `xargs`, 
 | [`grok-build`](src/grok-build/README.md) | Installs the xAI `grok` CLI (Grok Build) via the upstream installer and persists shared `~/.grok` state across devcontainers. |
 | [`mistral-vibe`](src/mistral-vibe/README.md) | Installs Mistral Vibe CLI coding agent using Python virtual environment and persists shared state across devcontainers. |
 | [`mono`](src/mono/README.md) | Installs `mono-complete` from the official Mono stable repository |
+| [`omp`](src/omp/README.md) | Installs the Oh My Pi coding agent CLI (`omp`) from official prebuilt release assets (noninteractive, derived from https://omp.sh/install) and persists shared `~/.omp` state across devcontainers. Requires Bun 1.3.14+ or Node.js as a peer dependency for the full harness. |
 | [`opencode`](src/opencode/README.md) | Installs `opencode` from official GitHub release assets and persists shared state across devcontainers. |
 | [`pi`](src/pi/README.md) | Installs the Pi coding agent CLI (`pi`) via a noninteractive npm install and persists shared `~/.pi` state across devcontainers. Requires Node.js 22.19+ with npm as a peer dependency. |
 | [`rename-user`](src/rename-user/README.md) | Renames the default container user (`vscode`) to match the configured `remoteUser`, preserving sudo access. |

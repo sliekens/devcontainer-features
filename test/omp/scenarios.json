@@ -1,0 +1,26 @@
+{
+    "default_binary": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "omp": {}
+        }
+    },
+    "with_node_feature": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainers/features/node:2": {
+                "version": "lts",
+                "nodeGypDependencies": false
+            },
+            "omp": {}
+        }
+    },
+    "pinned_version": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "omp": {
+                "version": "17.2.9"
+            }
+        }
+    }
+}
