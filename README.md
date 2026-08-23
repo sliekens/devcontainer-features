@@ -48,6 +48,7 @@ As an alternative to automating with the Dev Containers CLI, `jq`, and `xargs`, 
 | [`claude`](src/claude/README.md) | Installs `claude` (Claude Code) via the upstream native installer and persists shared state across devcontainers. |
 | [`codex`](src/codex/README.md) | Installs the OpenAI `codex` CLI from the official packaged release assets and persists `~/.codex` in shared state across devcontainers. |
 | [`copilot`](src/copilot/README.md) | Installs the GitHub `copilot` CLI from official release assets and persists shared `~/.copilot` state across devcontainers. |
+| [`cursor-agent`](src/cursor-agent/README.md) | Installs the Cursor CLI (`agent` / `cursor-agent`) from official release assets and persists shared `~/.cursor` state across devcontainers. |
 | [`github-cli`](src/github-cli/README.md) | Wraps the official `gh` (GitHub CLI) feature and adds persistent volume mounts for config and state |
 | [`grok-build`](src/grok-build/README.md) | Installs the xAI `grok` CLI (Grok Build) via the upstream installer and persists shared `~/.grok` state across devcontainers. |
 | [`mistral-vibe`](src/mistral-vibe/README.md) | Installs Mistral Vibe CLI coding agent using Python virtual environment and persists shared state across devcontainers. |
