@@ -1,0 +1,43 @@
+{
+    "id": "cursor-agent",
+    "name": "Cursor CLI",
+    "version": "1.0.0",
+    "description": "Installs the Cursor CLI (`agent` / `cursor-agent`) from official release assets and persists shared `~/.cursor` state across devcontainers.",
+    "documentationURL": "https://github.com/sliekens/devcontainer-features/blob/main/src/cursor-agent/README.md",
+    "licenseURL": "https://github.com/sliekens/devcontainer-features/blob/main/LICENSE",
+    "keywords": [
+        "cursor",
+        "cursor-agent",
+        "agent",
+        "ai",
+        "cli",
+        "coding"
+    ],
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version to install. Use `latest` for the current installer release, or specify a version like `2026.08.11-e8db854`."
+        }
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/.cursor/",
+            "target": "/var/lib/cursor-agent"
+        }
+    ],
+    "onCreateCommand": "/usr/local/share/cursor-agent/on_create.sh",
+    "containerEnv": {
+        "AGENT_CLI_CREDENTIAL_STORE": "file"
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/sliekens/devcontainer-features/rename-user"
+    ],
+    "customizations": {
+        "sliekens": {
+            "initializeCommand": "mkdir -p \"$HOME/.cursor\""
+        }
+    }
+}
