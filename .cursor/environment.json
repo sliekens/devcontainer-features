@@ -1,5 +1,11 @@
 {
   "name": "devcontainer-features",
   "install": "bash .cursor/install.sh",
-  "start": "bash .cursor/start.sh"
+  "start": "bash .cursor/start.sh",
+  "terminals": [
+    {
+      "name": "dockerd",
+      "command": "bash .cursor/dockerd-term.sh"
+    }
+  ]
 }
