@@ -13,5 +13,13 @@
             }
         },
         "remoteUser": "octocat"
+    },
+    "pinned_version_bundled_code_mode_host": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "codex": {
+                "version": "0.153.0"
+            }
+        }
     }
 }

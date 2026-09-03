@@ -145,6 +145,7 @@ main() {
 
     local codex_source=""
     local rg_source=""
+    local code_mode_host_source=""
 
     # Upstream archive layout changed in newer releases; support both layouts.
     if [ -f "${tmp_dir}/package/vendor/${VENDOR_TARGET}/bin/codex" ]; then
@@ -159,6 +160,13 @@ main() {
         rg_source="${tmp_dir}/package/vendor/${VENDOR_TARGET}/path/rg"
     fi
 
+    # `codex-code-mode-host` is bundled next to `codex` in the packaged assets
+    # of newer releases (openai/codex started shipping it with v0.143.0). Older
+    # releases do not contain it, in which case it is skipped with a notice.
+    if [ -f "${tmp_dir}/package/vendor/${VENDOR_TARGET}/bin/codex-code-mode-host" ]; then
+        code_mode_host_source="${tmp_dir}/package/vendor/${VENDOR_TARGET}/bin/codex-code-mode-host"
+    fi
+
     if [ -z "$codex_source" ] || [ -z "$rg_source" ]; then
         echo "Unexpected Codex archive layout for ${asset_name}."
         echo "Archive contents:"
@@ -169,6 +177,13 @@ main() {
     install -m 0755 "$codex_source" "${INSTALL_DIR}/codex"
     install -m 0755 "$rg_source" "${INSTALL_DIR}/rg"
     install -m 0755 "$SCRIPT_DIR/on_create.sh" /usr/local/share/codex/on_create.sh
+
+    if [ -n "$code_mode_host_source" ]; then
+        install -m 0755 "$code_mode_host_source" "${INSTALL_DIR}/codex-code-mode-host"
+        echo "Installed codex-code-mode-host ${release_version}."
+    else
+        echo "codex-code-mode-host is not bundled in the ${release_tag} release assets; skipping."
+    fi
 
     codex --version
     rg --version | head -n 1
