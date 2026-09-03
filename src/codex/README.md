@@ -6,6 +6,7 @@ The feature installs:
 
 - `codex`
 - a bundled `rg` binary that matches the upstream Codex package layout
+- `codex-code-mode-host` when the release bundles it (Codex v0.143.0 and newer); older releases skip it with a notice
 
 ## Example Usage
 
@@ -75,6 +76,9 @@ The installed tool is subject to its own license: [Codex CLI license](https://gi
 - [Codex CLI documentation](https://developers.openai.com/codex)
 
 ## Release Notes
+
+## 1.2.0 - 2026-09-03
+- Install `codex-code-mode-host` (Codex's code editor integration helper) when it is bundled in the release package (Codex v0.143.0 and newer); older releases remain supported and skip the helper with a notice.
 
 ## 1.1.3 - 2026-08-01
 - Declare `customizations.sliekens.initializeCommand` for composable host path pre-create; document automated and manual `initializeCommand` wiring.
